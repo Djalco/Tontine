@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fitToHeight="true" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SidebarController">
+   <content>
+      <VBox spacing="5.0" styleClass="sidebar">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="89.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Text fill="#0a00ff" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-bold" text="Nebs">
+                           <font>
+                              <Font name="SansSerif Regular" size="25.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-muted" text="Tontine" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Accordion style="-fx-background-color: none;" />
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER" styleClass="menu-header">
+                     <children>
+                        <Line endX="20.0" fill="BLACK" stroke="#ff2626" strokeLineJoin="ROUND" styleClass="menu-header-separator" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="App" />
+                     </children>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </HBox>
+                  <Accordion styleClass="menu">
+                     <panes>
+                        <TitledPane alignment="CENTER_RIGHT" collapsible="false" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Tableau De bord" textFill="RED">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER" styleClass="menu-header">
+                     <children>
+                        <Line endX="20.0" fill="BLACK" stroke="#ff2626" strokeLineJoin="ROUND" styleClass="menu-header-separator" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion" />
+                     </children>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </HBox>
+                  <Accordion styleClass="menu">
+                     <panes>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Membres" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;">
+                                 <children>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Ajouter">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Vue d'ensemble">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/user.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Prets" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;">
+                                 <children>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Ajouter">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Vue d'ensemble">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/loan.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Sanction" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;">
+                                 <children>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Vue d'ensemble">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/sanction.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Session" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;">
+                                 <children>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Ajouter">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Vue d'ensemble">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/session.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER" styleClass="menu-header">
+                     <children>
+                        <Line endX="20.0" fill="BLACK" stroke="#ff2626" strokeLineJoin="ROUND" styleClass="menu-header-separator" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Administration" />
+                     </children>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </HBox>
+                  <Accordion styleClass="menu">
+                     <panes>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Roles" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;">
+                                 <children>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Affecter">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Vue d'ensemble">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/role.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER_RIGHT" collapsible="false" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Log" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;" />
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/log.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER" styleClass="menu-header">
+                     <children>
+                        <Line endX="20.0" fill="BLACK" stroke="#ff2626" strokeLineJoin="ROUND" styleClass="menu-header-separator" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Configurations" />
+                     </children>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </HBox>
+                  <Accordion styleClass="menu">
+                     <panes>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Parametres" textFill="RED">
+                           <content>
+                              <VBox style="-fx-spacing: 15;">
+                                 <children>
+                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"  styleClass="menu-item" text="Mon compte">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Tontine">
+                                       <graphic>
+                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/setting.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

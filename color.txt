@@ -1,0 +1,38 @@
+Absolutely, if you prefer to use #696cff as the main color for the buttons, you can still create a harmonious color scheme for your tontine management application. Let's adjust the other color choices accordingly:
+
+1. Main Button Color:
+   - Hex Code: #696cff
+   - RGB: (105, 108, 255)
+   - This color will serve as the primary color for buttons, highlighting interactive elements on the interface.
+
+2. Menu/Navigation Background Color:
+   - Hex Code: #d9d9ff
+   - RGB: (217, 217, 255)
+   - Light purple-ish blue to differentiate the menu area from the rest of the interface.
+
+3. Text Color for Headers and Content:
+   - Hex Code: #1A1A1A
+   - RGB: (26, 26, 26)
+   - Dark gray text for high contrast and readability on the background.
+
+4. Table Header Background Color:
+   - Hex Code: #f2f2ff
+   - RGB: (242, 242, 255)
+   - Off-white color for table headers to maintain consistency with the overall color scheme.
+
+5. Table Row Background Color:
+   - Hex Code: #ffffff
+   - RGB: (255, 255, 255)
+   - White background for table rows, providing a clear visual distinction.
+
+6. Hover/Active State Color:
+   - Hex Code: #879cff
+   - RGB: (135, 156, 255)
+   - A brighter, complementary blue for hover and active states to provide interactive feedback.
+
+7. Link Color:
+   - Hex Code: #3a3abf
+   - RGB: (58, 58, 191)
+   - A slightly darker blue for active links to ensure they stand out within the content.
+
+By adjusting the color scheme using #696cff as the main button color, you can create a visually appealing and consistent interface that aligns with your preferences and ensures a professional and modern appearance for your tontine management application.
