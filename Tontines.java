@@ -13,30 +13,25 @@ import javafx.beans.property.StringProperty;
  *
  * @author Alexiapc
  */
-public class Tontine {
-    protected IntegerProperty id;
+public class Tontines {
+    protected String id;
 
-    public Tontine(int id) {
-         this.id = new SimpleIntegerProperty(id);
+    public Tontines(String id) {
+        this.id = id;
     }
-    
-    public Tontine() {
-         this.id = new SimpleIntegerProperty();
+
+     public Tontines() {
+        this.id = null;
     }
-    
-    public IntegerProperty IdProperty() {
+     
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id.set(id);
-    }
-    
-    
-    public int getId() {
-        return id.get();
+    public void setId(String id) {
+        this.id = id;
     }
 
- 
     
+   
 }

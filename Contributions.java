@@ -5,21 +5,18 @@
  */
 package Model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  *
  * @author Alexiapc
  */
-public class Contribution extends ManagePayment{
+public class Contributions extends ManagePayments{
 
-    public Contribution(int id, int amont, DatePayment datePayment) {
+    public Contributions(String id, int amont, DatePayment datePayment) {
         super(id, amont, datePayment);
     }
 
-    public Contribution() {
-         super(0, 0, null);
+    public Contributions() {
+        super(null, 0, null);
     }
-   
 }
