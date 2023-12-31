@@ -1,8 +1,19 @@
+* {
+	-fx-primary-color: #696cff;
+	-fx-primary-button-color: #696cff;
+	-fx-secondary-color: #4B6EAF;
+    -fx-color-border: #d9dee3;
+    -fx-color-bordor-secondary: #8592a3;
+	-fx-focus-color: -fx-secondary-color;
+	-fx-title-bold: #566a7f;
+}
+
+
 .drop-shadow{
 	-fx-effect: dropshadow( one-pass-box , grey , 8 , 0.0 , 0 , 0 );
 }
 Button{
-	-fx-background-color:  #696cff;
+	-fx-background-color:  -fx-primary-button-color;
 	-fx-cursor: hand;
 }
 .sidebar{
@@ -56,7 +67,7 @@ Button{
 }
 .searchBar .body TextField{
 	-fx-background-color: none;
-	-fx-border-color: #d9dee3;
+	-fx-border-color: -fx-color-border;
 	-fx-border-radius: 5px;
 }
 .title-muted{
@@ -65,7 +76,7 @@ Button{
 }
 
 .title-bold{
-	-fx-fill: #566a7f;
+	-fx-fill: -fx-title-bold;
 	-fx-font-size: 22;
 	-fx-font-weight: bold;
 }
@@ -102,7 +113,7 @@ Button{
 }
 .menu-header-separator{
 	-fx-stroke-width: 5;
-	-fx-stroke: #d9dee3; 
+	-fx-stroke: -fx-color-border; 
 	-fx-stroke-line-cap: round;
 }
 .menu-header Text{
@@ -148,7 +159,7 @@ Button{
 
 .table-view .column-header {
     -fx-background-color: transparent;
-    -fx-border-color: #d9dee3;
+    -fx-border-color: -fx-color-border;
     -fx-border-width: 0 0 1 0
 }
 
@@ -161,7 +172,7 @@ Button{
     -fx-text-background-color: #697a8d;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
-    -fx-border-color: #d9dee3;
+    -fx-border-color: -fx-color-border;
     -fx-border-width: 0 1 1 1  
 }
 .table-row-cell:even{
@@ -169,7 +180,7 @@ Button{
     -fx-text-background-color: #697a8d;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
-    -fx-border-color: #d9dee3;
+    -fx-border-color: -fx-color-border;
     -fx-border-width: 0 1 1 1
 }
 .table-row-cell:hover {
@@ -249,8 +260,8 @@ Button{
 }
 
 .menu .menu-item Circle{
-	-fx-fill: #d9dee3;
-	-fx-stroke: #d9dee3;
+	-fx-fill: -fx-color-border;
+	-fx-stroke: -fx-color-border;
 }
 
 .menu .menu-item Text{
@@ -285,7 +296,7 @@ Button{
 }
  .combo-box{
 -fx-background-color:transparent; 
-    -fx-border-color: #d9dee3;
+    -fx-border-color: -fx-color-border;
     -fx-border-radius: 5 0 0 5;
     -fx-background-radius: 5 0 0 5;
  }
@@ -293,7 +304,7 @@ Button{
  .combo-box .list-cell{
     -fx-background-color: #f9fafb;
     -fx-text-background-color: #697a8d;
-    -fx-border-color: #d9dee3;
+    -fx-border-color: -fx-color-border;
 }
  .combo-box .list-cell:odd{
     -fx-background-color: #fff;
@@ -306,6 +317,78 @@ Button{
 /*Edit Cell Color Only when selected */
 .combo-box .list-cell:selected{
 -fx-background-color:transparent; 
-    -fx-border-color: #d9dee3;
+    -fx-border-color: -fx-color-border;
     -fx-border-radius: 5 0 0 5;
+}
+
+/* Formulaire */
+.title-form{
+	-fx-fill: -fx-title-bold;
+	-fx-font-weight: bold;
+	-fx-font-size: 18;
+}
+.input-box{
+    -fx-border-color: -fx-color-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-alignment: CENTER;
+    -fx-padding: 5 0 5 5;
+    -fx-max-width: 400;
+}
+.input{
+    -fx-border-color: none;
+    -fx-background-color: none;
+}
+.text-validator{
+	-fx-fill: red;
+	-fx-font-size: 12;
+}
+.input-title{
+	-fx-fill: -fx-title-bold;
+	-fx-font-weight: bold;
+	-fx-font-size: 13;
+}
+.spinner{
+	-fx-background-color: none;
+}
+.spinner .text-field{
+	-fx-background-color: #fff;
+}
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+	-fx-background-color: transparent;
+	-fx-background-radius: 0;
+}
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+	-fx-background-color: black;
+}
+
+.add-btn{
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+	-fx-background-radius: 5;
+	-fx-border-radius: 5;	
+	-fx-padding: 8 30;
+}
+.cancel-btn{
+	-fx-background-color: none;
+	-fx-border-color: -fx-color-bordor-secondary;
+	-fx-text-fill: -fx-color-bordor-secondary;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+	-fx-background-radius: 5;
+	-fx-border-radius: 5;	
+	-fx-padding: 8 30;
+}
+.cancel-btn:hover{
+	-fx-background-color: -fx-color-bordor-secondary;
+	-fx-border-color: -fx-color-bordor-secondary;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+	-fx-background-radius: 5;
+	-fx-border-radius: 5;	
+	-fx-padding: 8 30;
 }
