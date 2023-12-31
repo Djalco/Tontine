@@ -6,6 +6,8 @@
     -fx-color-bordor-secondary: #8592a3;
 	-fx-focus-color: -fx-secondary-color;
 	-fx-title-bold: #566a7f;
+	-fx-text-tab: #566a7f;
+	-fx-title-muted: #a1acb8;
 }
 
 
@@ -71,7 +73,7 @@ Button{
 	-fx-border-radius: 5px;
 }
 .title-muted{
-	-fx-fill: #a1acb8;
+	-fx-fill: -fx-title-muted;
 	-fx-font-size: 20;
 }
 
@@ -117,7 +119,7 @@ Button{
 	-fx-stroke-line-cap: round;
 }
 .menu-header Text{
-	-fx-fill: #a1acb8;
+	-fx-fill: -fx-title-muted;
 	-fx-font-size: 13;
 	-fx-font-weight: bold;
 }
@@ -327,6 +329,11 @@ Button{
 	-fx-font-weight: bold;
 	-fx-font-size: 18;
 }
+.title-form-sub{
+	-fx-fill: -fx-title-muted;
+	-fx-font-weight: 700;
+	-fx-font-size: 18;
+}
 .input-box{
     -fx-border-color: -fx-color-border;
     -fx-border-width: 1;
@@ -391,4 +398,54 @@ Button{
 	-fx-background-radius: 5;
 	-fx-border-radius: 5;	
 	-fx-padding: 8 30;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+    -fx-background-color: -fx-color-border;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 15;
+}
+.tab:selected{
+    -fx-background-color: #fff;
+    -fx-text-fill: -fx-text-tab;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: -fx-text-tab;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: -fx-text-tab;
+}
+/* Detail */
+
+
+.title-detail{
+	-fx-fill: -fx-title-muted;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+.title-detail-number{
+	-fx-fill: -fx-title-bold;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+
+.title-road{
+	-fx-fill: -fx-color-bordor-secondary;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+.title-road-sub{
+	-fx-fill: -fx-title-muted;
+	-fx-font-weight: 700;
+	-fx-font-size: 15;
 }
