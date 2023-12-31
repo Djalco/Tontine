@@ -1,7 +1,7 @@
 package model.enumration;
 
 public  enum Role {
-    Member(1, "Membre"), Secretary(2, "Secretaire"), Treasurer(3, "Tresorier"), President(4, "President");
+    MEMBER(1, "Membre"), SECRETARY(2, "Secretaire"), TREASURER(3, "Tresorier"), PRESIDENT(4, "PRESIDENT");
 
 	private String name;
 	private int id;
@@ -11,15 +11,15 @@ public  enum Role {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public int getId() {
+		return id;
 	}
 	
-	public Role findRole(int id) {
-		if(id == 4) return Role.President;
-		if(id == 3) return Role.Treasurer;
-		if(id == 2) return Role.Secretary;
-		if(id == 1) return Role.Member;
+	public static Role getRole(int id) {
+		if(id == 4) return Role.PRESIDENT;
+		if(id == 3) return Role.TREASURER;
+		if(id == 2) return Role.SECRETARY;
+		if(id == 1) return Role.MEMBER;
 		return null;
 	}
 }

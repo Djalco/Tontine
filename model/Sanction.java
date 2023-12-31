@@ -1,11 +1,15 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.enumration.InfractionPayment;
 import model.enumration.PaymentType;
 
 public class Sanction extends AbstractEntity{
+	private static List<Sanction> sanctions = new ArrayList<Sanction>();
+	
 	private static PaymentType paymentType;
 	private InfractionPayment infractionPayment;
 	private LocalDate startDate;
@@ -17,6 +21,7 @@ public class Sanction extends AbstractEntity{
 		this.infractionPayment = infractionPayment;
 		this.startDate = startDate;
 		this.datePayment = datePayment;
+		if(!sanctions.contains(this)) sanctions.add(this);
 	}
 
 	public Sanction() {

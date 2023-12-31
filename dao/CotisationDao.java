@@ -13,15 +13,15 @@ public class CotisationDao extends Dao<Cotisation>{
 	}
 
 	@Override
-	public int create(Cotisation obj) throws SQLException {
+	public Cotisation create(Cotisation obj) throws SQLException {
 		// TODO Auto-generated method stub
-		return 0;
+		return getLast();
 	}
 
 	@Override
-	public int update(Cotisation obj) throws SQLException {
+	public Cotisation update(Cotisation obj) throws SQLException {
 		// TODO Auto-generated method stub
-		return 0;
+		return find(obj.getId());
 	}
 
 	@Override

@@ -13,11 +13,14 @@ import java.util.List;
 import dao.DaoFactory;
 
 public class Session extends AbstractEntity{
+	private static List<Session> sessions = new ArrayList<Session>();
+	
     protected LocalDate dateSession;
 
 	public Session(String id, LocalDate createdDate, LocalDate lastModifyDate, LocalDate dateSession) {
 		super(id, createdDate, lastModifyDate);
 		this.dateSession = dateSession;
+		if(!sessions.contains(this)) sessions.add(this);
 	}
 
 	public Session() {
@@ -25,11 +28,11 @@ public class Session extends AbstractEntity{
 		this.dateSession = null;
 	}
 	
-
-
 	private List<Cotisation> getCotisations() throws SQLException {
 		return DaoFactory.getCotisationDao().findBySession(id);
 	}
+	
+	
 	
 	
 

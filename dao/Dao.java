@@ -22,12 +22,21 @@ public abstract class Dao <T>{
 		con = BdConnexion.getInstance();
 	}
 
-	public abstract int create(T obj) throws SQLException;
+	public abstract T create(T obj) throws SQLException;
 	
-	public abstract int update(T obj) throws SQLException;
+	public abstract T update(T obj) throws SQLException;
 
 	public abstract T find(String id) throws SQLException;
 
+	public T getLast() throws SQLException {
+		String sql = "SELECT `id` FROM " + table 
+				+ " ORDER BY `createdDate` DESC "
+				+ " LIMIT 1";
+		PreparedStatement pst = con.prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		if (rs.next()) return find(rs.getString("id"));
+		return null;
+	}
 	public int delete(String id) throws SQLException{
 		String sql = "UPDATE `"+table+" SET `is_actif` = 0 WHERE `id` = ?";
 		PreparedStatement pst = con.prepareStatement(sql);

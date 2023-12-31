@@ -8,15 +8,26 @@ package model;
 import java.time.LocalDate;
 
 import model.enumration.DatePayment;
+import model.enumration.ManagePaymentType;
 
 public class Contribution extends ManagePayment{
 
-	public Contribution(String id, LocalDate createdDate, LocalDate lastModifyDate, int amont, DatePayment datePayment, String cotisation) {
-		super(id, createdDate, lastModifyDate, amont, datePayment, cotisation);
+	private String id_;
+	
+	public Contribution(String id1, LocalDate createdDate, LocalDate lastModifyDate, int amont, DatePayment datePayment, String cotisation, String id2) {
+		super(id1, createdDate, lastModifyDate, amont, datePayment, cotisation,ManagePaymentType.CONTRIBUTION.getId());
+		id = id2;
 	}
 
 	public Contribution() {
 		super();
+		id_ = "";
+	}
+
+	public String getId_() {
+		return id_;
 	}   
+	
+	
 
 }
