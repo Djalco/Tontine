@@ -1,40 +1,24 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class AbstractEntity {
 
 	protected String id;
-	protected LocalDate createdDate;
-	protected LocalDate lastModifyDate;
 	protected int row;
-	protected boolean isRemoved = false;
 	
-	public AbstractEntity(String id, LocalDate createdDate, LocalDate lastModifyDate) {
+	public AbstractEntity(String id) {
 		super();
 		this.id = id;
-		this.createdDate = createdDate;
-		this.lastModifyDate = lastModifyDate;
 	}
 	
 	public AbstractEntity() {
 		super();
 		this.id = "";
-		this.createdDate = null;
-		this.lastModifyDate = null;
 	}
 	
 	public String getId() {
 		return id;
-	}
-	
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-	
-	public LocalDate getLastModifyDate() {
-		return lastModifyDate;
 	}
 
 	public int getRow() {
@@ -43,14 +27,6 @@ public abstract class AbstractEntity {
 
 	public void setRow(int row) {
 		this.row = row;
-	}
-	
-	private void remove() {
-		this.isRemoved = true;
-	}
-
-	public boolean isRemoved() {
-		return isRemoved;
 	}
 
 	@Override

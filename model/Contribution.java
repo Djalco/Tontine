@@ -5,28 +5,29 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
-import model.enumration.DatePayment;
+import dao.DaoFactory;
 import model.enumration.ManagePaymentType;
 
 public class Contribution extends ManagePayment{
 
-	private String id_;
+	private String sessionContributed;
 	
-	public Contribution(String id1, LocalDate createdDate, LocalDate lastModifyDate, int amont, DatePayment datePayment, String cotisation, String id2) {
-		super(id1, createdDate, lastModifyDate, amont, datePayment, cotisation,ManagePaymentType.CONTRIBUTION.getId());
-		id = id2;
+	public Contribution(String id, LocalDate createdDate, LocalDate lastModifyDate, int amont, String session, String cotisation, String sessionContributed) {
+		super(id, session, cotisation,ManagePaymentType.CONTRIBUTION.getId());
+		this.sessionContributed = sessionContributed;
 	}
 
 	public Contribution() {
 		super();
-		id_ = "";
 	}
 
-	public String getId_() {
-		return id_;
+	public Session getSessionContributed() throws SQLException {
+		return DaoFactory.getSessionDao().find(sessionContributed);
 	}   
+	
 	
 	
 

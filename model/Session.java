@@ -13,19 +13,35 @@ import java.util.List;
 import dao.DaoFactory;
 
 public class Session extends AbstractEntity{
+	
 	private static List<Session> sessions = new ArrayList<Session>();
+	
+	private int numSession;
 	
     protected LocalDate dateSession;
 
-	public Session(String id, LocalDate createdDate, LocalDate lastModifyDate, LocalDate dateSession) {
-		super(id, createdDate, lastModifyDate);
+	public Session(String id, int numSession, LocalDate dateSession) {
+		super(id);
 		this.dateSession = dateSession;
+		this.numSession = numSession;
 		if(!sessions.contains(this)) sessions.add(this);
 	}
 
 	public Session() {
 		super();
 		this.dateSession = null;
+	}
+	
+	public int getNumSession() {
+		return numSession;
+	}
+
+	public LocalDate getDateSession() {
+		return dateSession;
+	}
+
+	public LocalDate getNextSession() {
+		return null;
 	}
 	
 	private List<Cotisation> getCotisations() throws SQLException {

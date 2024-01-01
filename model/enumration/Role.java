@@ -14,6 +14,10 @@ public  enum Role {
 	public int getId() {
 		return id;
 	}
+
+	public String getName() {
+		return name;
+	}
 	
 	public static Role getRole(int id) {
 		if(id == 4) return Role.PRESIDENT;

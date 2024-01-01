@@ -22,8 +22,6 @@ public class User extends AbstractEntity{
 
 	private User(UserBuilder builder) {
 		id = builder.id;
-		createdDate = builder.createdDate;
-		lastModifyDate = builder.lastModifyDate;
 		login = builder.login;
 		firstname = builder.firstname;
 		lastname = builder.lastname;
@@ -85,8 +83,8 @@ public class User extends AbstractEntity{
 		this.nbPerson = nbPerson;
 	}
 
-	private List<Cotisation> getCotisations() throws SQLException {
-		return DaoFactory.getCotisationDao().findByUser(id);
+	private List<ManagePayment> getManagePaymeny() throws SQLException {
+		return DaoFactory.getManagePaymentDao().findByUser(id);
 	}
 
 	public static User getUserConnected() {
@@ -105,8 +103,6 @@ public class User extends AbstractEntity{
 	public static class UserBuilder {
 		private String id = "";
 		private Role role = null;
-		private LocalDate createdDate = LocalDate.now();
-		private LocalDate lastModifyDate = LocalDate.now();
 		private String login = "";
 		private String firstname = "";
 		private String lastname = "";
@@ -118,16 +114,6 @@ public class User extends AbstractEntity{
 		public UserBuilder(String id, Role role) {
 			this.id = id;
 			this.role = role;
-		}
-
-		public UserBuilder createdDate(LocalDate createdDate) {
-			this.createdDate = createdDate;
-			return this;
-		}
-
-		public UserBuilder lastModifyDate(LocalDate lastModifyDate) {
-			this.lastModifyDate = lastModifyDate;
-			return this;
 		}
 
 		public UserBuilder login(String login) {

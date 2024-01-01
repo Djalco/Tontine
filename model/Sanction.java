@@ -1,9 +1,10 @@
 package model;
 
-import java.time.LocalDate;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.DaoFactory;
 import model.enumration.InfractionPayment;
 import model.enumration.PaymentType;
 
@@ -12,23 +13,23 @@ public class Sanction extends AbstractEntity{
 	
 	private static PaymentType paymentType;
 	private InfractionPayment infractionPayment;
-	private LocalDate startDate;
-	private LocalDate datePayment;
+	private String sessionStart;
+	private String sessionSold;
 	
-	public Sanction(String id, LocalDate createdDate, LocalDate lastModifyDate, InfractionPayment infractionPayment,
-			LocalDate startDate, LocalDate datePayment) {
-		super(id, createdDate, lastModifyDate);
-		this.infractionPayment = infractionPayment;
-		this.startDate = startDate;
-		this.datePayment = datePayment;
+	public Sanction(String id, int infractionPayment,
+			String sessionStart, String sessionSold) {
+		super(id);
+		this.infractionPayment = InfractionPayment.getInfractionPayment(infractionPayment);
+		this.sessionStart = sessionStart;
+		this.sessionSold = sessionSold;
 		if(!sanctions.contains(this)) sanctions.add(this);
 	}
 
 	public Sanction() {
 		super();
 		this.infractionPayment = null;
-		this.startDate = null;
-		this.datePayment = null;
+		this.sessionStart = "";
+		this.sessionSold = "";
 	}
 
 	public static PaymentType getPaymentType() {
@@ -39,12 +40,20 @@ public class Sanction extends AbstractEntity{
 		return infractionPayment;
 	}
 
-	public LocalDate getStartDate() {
-		return startDate;
+	public static List<Sanction> getSanctions() {
+		return sanctions;
 	}
 
-	public LocalDate getDatePayment() {
-		return datePayment;
+	public Session getSessionStart() throws SQLException {
+		return DaoFactory.getSessionDao().find(sessionStart);
+	}
+
+	public Session getSessionSold() throws SQLException {
+		return DaoFactory.getSessionDao().find(sessionSold);
+	}
+	
+	public int getAmount() {
+		return 0;
 	}
 
 }

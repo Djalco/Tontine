@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import model.Cotisation;
 import model.ManagePayment;
 
 public class ManagePaymentDao extends Dao<ManagePayment> {
@@ -25,6 +27,16 @@ public class ManagePaymentDao extends Dao<ManagePayment> {
 
 	@Override
 	public ManagePayment find(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<ManagePayment> findBySession(String cotisation) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<ManagePayment> findByUser(String user) {
 		// TODO Auto-generated method stub
 		return null;
 	}

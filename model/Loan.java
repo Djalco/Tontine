@@ -1,18 +1,20 @@
 package model;
 
-import java.time.LocalDate;
+import java.sql.SQLException;
 
-import model.enumration.DatePayment;
-import model.enumration.ManagePaymentType;
+import dao.DaoFactory;
 import model.enumration.PaymentType;
 
 public class Loan extends ManagePayment{
      private static PaymentType paymentType;
-     private String id_;
-    
-    public Loan(String id, LocalDate createdDate, LocalDate lastModifyDate, int amont, DatePayment datePayment, String cotisation, String id_) {
-		super(id, createdDate, lastModifyDate, amont, datePayment, cotisation,ManagePaymentType.LOAN.getId());
-		this.id_ = id_;
+     private int amount;
+     private String sessionSold;
+
+	public Loan(String id, String session, String cotisation, int managePaymentType, String id_, int amount,
+			String sessionSold) {
+		super(id, session, cotisation, managePaymentType);
+		this.amount = amount;
+		this.sessionSold = sessionSold;
 	}
 
 	public Loan() {
@@ -31,9 +33,15 @@ public class Loan extends ManagePayment{
 		Loan.paymentType = paymentType;
 	}
 
-	public String getId_() {
-		return id_;
+	public int getAmount() {
+		return amount;
 	}
+
+	public Session getSessionSold() throws SQLException {
+		return DaoFactory.getSessionDao().find(sessionSold);
+	}
+
+	
 	
 	
 	
