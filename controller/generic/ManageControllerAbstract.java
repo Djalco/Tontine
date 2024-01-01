@@ -1,4 +1,4 @@
-package controller;
+package controller.generic;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import dao.Dao;
 import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 
-public abstract class AbstractManageController<T> implements Initializable, InterfaceManageController<T>{
+public abstract class ManageControllerAbstract<T> implements Initializable, ManageControllerInterface<T>{
 
 	protected Dao<T> dao;
 
