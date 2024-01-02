@@ -6,12 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public interface ManageControllerInterface<T> {
 
-	public Button getSearch();
+	public Button getSearchBtn();
 
 	public Button getAdd();
 	

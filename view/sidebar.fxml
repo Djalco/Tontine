@@ -52,7 +52,7 @@
                   </HBox>
                   <Accordion styleClass="menu">
                      <panes>
-                        <TitledPane alignment="CENTER_RIGHT" collapsible="false" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Tableau De bord" textFill="RED">
+                        <TitledPane fx:id="dasboard" alignment="CENTER_RIGHT" collapsible="false" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Tableau De bord" textFill="RED">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -82,17 +82,17 @@
                            <content>
                               <VBox style="-fx-spacing: 15;">
                                  <children>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Ajouter">
+                                    <Button fx:id="memberAdd" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Ajouter">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                    <Button fx:id="memberManage" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
+                                    <Button fx:id="memberOverview" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
@@ -112,17 +112,17 @@
                            <content>
                               <VBox style="-fx-spacing: 15;">
                                  <children>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Ajouter">
+                                    <Button fx:id="loanAdd" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Ajouter">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                    <Button fx:id="loanManage" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
+                                    <Button fx:id="loanOverview" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
@@ -142,12 +142,12 @@
                            <content>
                               <VBox style="-fx-spacing: 15;">
                                  <children>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
+                                    <Button fx:id="sanctionManage" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
+                                    <Button fx:id="sanctionOverview" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
@@ -167,17 +167,12 @@
                            <content>
                               <VBox style="-fx-spacing: 15;">
                                  <children>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Ajouter">
+                                    <Button fx:id="sessionManage" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
-                                       <graphic>
-                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
+                                    <Button fx:id="sessionOverview" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
@@ -214,17 +209,7 @@
                            <content>
                               <VBox style="-fx-spacing: 15;">
                                  <children>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Affecter">
-                                       <graphic>
-                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
-                                       </graphic>
-                                    </Button>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Gerer">
-                                       <graphic>
-                                          <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
+                                    <Button fx:id="roleOverview" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Vue d'ensemble">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
@@ -240,7 +225,7 @@
                               </ImageView>
                            </graphic>
                         </TitledPane>
-                        <TitledPane alignment="CENTER_RIGHT" collapsible="false" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Log" textFill="RED">
+                        <TitledPane fx:id="log" alignment="CENTER_RIGHT" collapsible="false" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="Log" textFill="RED">
                            <content>
                               <VBox style="-fx-spacing: 15;" />
                            </content>
@@ -277,12 +262,12 @@
                            <content>
                               <VBox style="-fx-spacing: 15;">
                                  <children>
-                                    <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Mon compte">
+                                    <Button fx:id="account" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Mon compte">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>
                                     </Button>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Tontine">
+                                    <Button fx:id="tontine" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu-item" text="Tontine">
                                        <graphic>
                                           <Circle fill="#979797" radius="4.0" stroke="#aba2a2" strokeType="INSIDE" />
                                        </graphic>

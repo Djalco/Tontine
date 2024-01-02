@@ -14,7 +14,7 @@ public abstract class ManageControllerAbstract<T> implements Initializable, Mana
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			getTableView().setItems(FXCollections.observableArrayList(dao.getAll(15)));
+//			getTableView().setItems(FXCollections.observableArrayList(dao.getAll(15)));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

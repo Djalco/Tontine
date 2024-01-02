@@ -15,14 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserAddController">
    <children>
       <HBox alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-bold" text="Utilisateur" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false">
+            <Button fx:id="backBtn" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,10 +56,10 @@
                                        <children>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../img/name.png" />
+                                                <Image url="@../img/login.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField promptText="luffy" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="login" promptText="luffy" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer l'identifiant" />
@@ -79,7 +78,7 @@
                                                 <Image url="@../img/password.png" />
                                              </image>
                                           </ImageView>
-                                          <PasswordField promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <PasswordField fx:id="password" promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mot de passe" />
@@ -103,7 +102,7 @@
                                                 <Image url="@../img/phone.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="mail" promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mail" />
@@ -122,7 +121,7 @@
                                                 <Image url="@../img/password.png" />
                                              </image>
                                           </ImageView>
-                                          <PasswordField promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <PasswordField fx:id="verifyPassword" promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez confirmer le mot de passe" />
@@ -162,7 +161,7 @@
                                                 <Image url="@../img/name.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField promptText="Njotsa Ella" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="lastname" promptText="Njotsa Ella" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le nom" />
@@ -181,7 +180,7 @@
                                                 <Image url="@../img/phone.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="mail" promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mail" />
@@ -200,7 +199,7 @@
                                                 <Image url="@../img/name.png" />
                                              </image>
                                           </ImageView>
-                                          <Spinner maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                          <Spinner fx:id="noms" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                                              <padding>
                                                 <Insets right="10.0" />
                                              </padding>
@@ -229,7 +228,7 @@
                                                       <Image url="@../img/name.png" />
                                                    </image>
                                                 </ImageView>
-                                                <TextField promptText="Brondon" styleClass="input" HBox.hgrow="ALWAYS" />
+                                                <TextField fx:id="firstname" promptText="Brondon" styleClass="input" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le prenom" />
@@ -248,7 +247,7 @@
                                                       <Image url="@../img/phone.png" />
                                                    </image>
                                                 </ImageView>
-                                                <TextField promptText="6 90 18 53 35" styleClass="input" HBox.hgrow="ALWAYS" />
+                                                <TextField fx:id="phone" promptText="6 90 18 53 35" styleClass="input" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le téléphone" />
@@ -267,7 +266,7 @@
                                                       <Image url="@../img/role_2.png" />
                                                    </image>
                                                 </ImageView>
-                                                <ComboBox maxWidth="1.7976931348623157E308" styleClass="input" HBox.hgrow="ALWAYS" />
+                                                <ComboBox fx:id="role" maxWidth="1.7976931348623157E308" styleClass="input" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entre le nom" />
@@ -288,10 +287,10 @@
       </VBox>
       <HBox alignment="CENTER" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" styleClass="add-btn" text="Ajouter" />
-            <Button mnemonicParsing="false" styleClass="cancel-btn" text="Annuler" />
+            <Button fx:id="mainBtn" mnemonicParsing="false" styleClass="add-btn" text="Ajouter" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" styleClass="cancel-btn" text="Annuler" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" styleClass="add-btn">
+            <Button fx:id="moreBtn" mnemonicParsing="false" styleClass="add-btn">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                      <image>

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox spacing="25.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="25.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserManageController">
    <children>
       <VBox>
          <children>
@@ -42,14 +42,14 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PATIENT" />
-                                    <TextField VBox.vgrow="ALWAYS" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+                                    <TextField fx:id="searchLastName" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
                               <VBox>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ORDRE" />
-                                    <ComboBox fx:id="searchOrder" prefWidth="150.0" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
+                                    <ComboBox fx:id="searchRole" prefWidth="150.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -59,8 +59,8 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IDENTIFIANT" />
-                                    <TextField VBox.vgrow="ALWAYS" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" />
+                                    <TextField fx:id="searchFirstName" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
                               <VBox>
@@ -76,8 +76,14 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DOCTEUR" />
-                                    <TextField />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" />
+                                    <TextField fx:id="searchPhone" />
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ORDRE" />
+                                    <ComboBox fx:id="searchOrder" prefWidth="150.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -113,62 +119,21 @@
             </HBox>
             <TableView fx:id="table" VBox.vgrow="ALWAYS">
                <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-                  <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn prefWidth="75.0" text="Nom" />
+                  <TableColumn prefWidth="75.0" text="Prenom" />
+                  <TableColumn prefWidth="75.0" text="Téléphone" />
+                  <TableColumn prefWidth="75.0" text="Role" />
+                  <TableColumn prefWidth="75.0" text="Statut">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Cotisation" />
+                        <TableColumn prefWidth="75.0" text="Prêt" />
+                     </columns></TableColumn>
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox fx:id="pagination" alignment="CENTER" spacing="10.0">
-               <children>
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/double-right.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/left.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" text="1" />
-                  <Button mnemonicParsing="false" text="2" />
-                  <Button mnemonicParsing="false" text="3" />
-                  <Button mnemonicParsing="false" text="4" />
-                  <Button mnemonicParsing="false" text="5" />
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/left.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/double-right.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
+            <HBox fx:id="pagination" alignment="CENTER" spacing="10.0" />
          </children>
          <styleClass>
             <String fx:value="tableContainer" />

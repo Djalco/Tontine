@@ -6,13 +6,15 @@ public interface EntityControllerInterface {
 
 	public Button getBackBtn();
 	
-	public Button getMainButton();
+	public Button getMainBtn();
 	
-	public Button getCancelButton();
+	public Button getCancelBtn();
 	
 	public Button getMoreBtn();
 	
 	public boolean verifyTextfield();
 	
-	public boolean verifyPassword();
+	public boolean verifySpinner();
+	
+	public boolean verifyComboBox();
 }
