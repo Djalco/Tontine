@@ -18,9 +18,9 @@ public class User extends AbstractEntity{
 	private String mail;
 	private String phone;
 	private Role role;
-	private String nbPerson;
+	private int nbPerson;
 
-	private User(UserBuilder builder) {
+	public User(UserBuilder builder) {
 		id = builder.id;
 		login = builder.login;
 		firstname = builder.firstname;
@@ -28,7 +28,7 @@ public class User extends AbstractEntity{
 		password = builder.password;
 		mail = builder.mail;
 		phone = builder.phone;
-		role = builder.role;
+		role = Role.getRole(builder.role);
 		nbPerson = builder.nbPerson;
 
 		if(!users.contains(this))users.add(this);
@@ -76,10 +76,10 @@ public class User extends AbstractEntity{
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public String getNbPerson() {
+	public int getNbPerson() {
 		return nbPerson;
 	}
-	public void setNbPerson(String nbPerson) {
+	public void setNbPerson(int nbPerson) {
 		this.nbPerson = nbPerson;
 	}
 
@@ -102,22 +102,32 @@ public class User extends AbstractEntity{
 
 	public static class UserBuilder {
 		private String id = "";
-		private Role role = null;
+		private int role = 0;
 		private String login = "";
 		private String firstname = "";
 		private String lastname = "";
 		private String password = "";
 		private String mail = "";
 		private String phone = "";
-		private String nbPerson = "";
+		private int nbPerson = 0;
 
-		public UserBuilder(String id, Role role) {
+		public UserBuilder id (String id) {
 			this.id = id;
+			return this;
+		}
+
+		public UserBuilder role(int role) {
 			this.role = role;
+			return this;
 		}
 
 		public UserBuilder login(String login) {
 			this.login = login;
+			return this;
+		}
+
+		public UserBuilder nbPerson(int nbPerson) {
+			this.nbPerson = nbPerson;
 			return this;
 		}
 

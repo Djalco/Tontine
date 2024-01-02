@@ -3,6 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import exception.EntityNotFoundException;
 import model.Cotisation;
 
 public class CotisationDao extends Dao<Cotisation>{
@@ -13,7 +14,7 @@ public class CotisationDao extends Dao<Cotisation>{
 	}
 
 	@Override
-	public Cotisation create(Cotisation obj) throws SQLException {
+	public Cotisation create(Cotisation obj) throws SQLException, EntityNotFoundException {
 		// TODO Auto-generated method stub
 		return getLast();
 	}

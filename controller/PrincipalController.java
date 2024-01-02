@@ -90,7 +90,7 @@ public class PrincipalController implements Initializable{
 			setMember();
 
 
-			switchPane(dashboard);
+			switchPane(memberManage);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

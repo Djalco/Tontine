@@ -1,8 +1,10 @@
 package controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import controller.generic.ManageControllerAbstract;
+import dao.DaoFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -85,6 +87,11 @@ public class UserManageController extends ManageControllerAbstract<User>{
 	@Override
 	public List<User> search() {
 		return null;
+	}
+
+	@Override
+	public void setDao() throws SQLException {
+		dao = DaoFactory.getUserDao();
 	}
 
 }

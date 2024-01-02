@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.SQLException;
 
+import exception.EntityNotFoundException;
 import model.Session;
 
 public class SessionDao extends Dao<Session> {
@@ -12,7 +13,7 @@ public class SessionDao extends Dao<Session> {
 	}
 
 	@Override
-	public Session create(Session obj) throws SQLException {
+	public Session create(Session obj) throws SQLException, EntityNotFoundException {
 		// TODO Auto-generated method stub
 		return getLast();
 	}

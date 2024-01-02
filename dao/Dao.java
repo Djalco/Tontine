@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import exception.EntityNotFoundException;
 import model.AbstractEntity;
 import sql.BdConnexion;
 
@@ -22,13 +23,14 @@ public abstract class Dao <T>{
 		con = BdConnexion.getInstance();
 	}
 
-	public abstract T create(T obj) throws SQLException;
+	public abstract T create(T obj) throws SQLException, EntityNotFoundException;
 	
-	public abstract T update(T obj) throws SQLException;
+	public abstract T update(T obj) throws SQLException, EntityNotFoundException;
 
-	public abstract T find(String id) throws SQLException;
+	public abstract T find(String id) throws SQLException, EntityNotFoundException;
 
-	public T getLast() throws SQLException {
+//	public String genera
+	public T getLast() throws SQLException, EntityNotFoundException {
 		String sql = "SELECT `id` FROM " + table 
 				+ " ORDER BY `createdDate` DESC "
 				+ " LIMIT 1";
@@ -44,7 +46,7 @@ public abstract class Dao <T>{
 		return pst.executeUpdate();
 	};
 	
-	public ArrayList<T> getAll(int limit) throws SQLException{
+	public ArrayList<T> getAll(int limit) throws SQLException, EntityNotFoundException{
 		List<T> array = new ArrayList<T>();
 		String sql = "SELECT `id` FROM " + table + " WHERE `is_actif` = 1 LIMIT ?;";
 		PreparedStatement pst = con.prepareStatement(sql);

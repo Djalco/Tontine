@@ -1,5 +1,6 @@
 package controller.generic;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javafx.scene.control.Button;
@@ -25,4 +26,6 @@ public interface ManageControllerInterface<T> {
 	public HBox getPagination();
 	
 	public List<T> search();
+	
+	public void setDao() throws SQLException;
 }

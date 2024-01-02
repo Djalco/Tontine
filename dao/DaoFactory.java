@@ -3,6 +3,7 @@ package dao;
 import java.sql.SQLException;
 
 import model.Cotisation;
+import model.User;
 
 public class DaoFactory {
 
@@ -34,7 +35,5 @@ public class DaoFactory {
 	public static ContributionDao getContributionDao() throws SQLException{
 		return new ContributionDao();
 	}
-
-
 
 }

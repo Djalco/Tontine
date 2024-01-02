@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 
 import dao.DaoFactory;
+import exception.EntityNotFoundException;
 
 public class Cotisation extends AbstractEntity{
 	private String user;
@@ -17,7 +18,7 @@ public class Cotisation extends AbstractEntity{
 		this.managePayment = managePayment;
 	}
 
-	public User getUser() throws SQLException {
+	public User getUser() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getUserDao().find(user);
 	}
 
