@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import exception.EntityNotFoundException;
-import model.Cotisation;
 import model.ManagePayment;
 
 public class ManagePaymentDao extends Dao<ManagePayment> {

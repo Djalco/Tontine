@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefWidth="1200.0" spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -45,11 +45,11 @@
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <HBox>
+                  <HBox maxWidth="800.0">
                      <children>
-                        <VBox HBox.hgrow="ALWAYS">
+                        <VBox spacing="20.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="LOGIN" />
                                     <HBox styleClass="input-box">
@@ -62,13 +62,10 @@
                                           <TextField promptText="luffy" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer l'identifiant" />
+                                    <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="err" text="Veuillez entrer l'identifiant" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="MOT DE PASSE" />
                                     <HBox styleClass="input-box">
@@ -83,16 +80,12 @@
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mot de passe" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
                            </children>
                         </VBox>
-                        <VBox HBox.hgrow="ALWAYS">
+                        <VBox spacing="20.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox />
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="MAIL" />
                                     <HBox styleClass="input-box">
@@ -107,11 +100,8 @@
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mail" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="CONFIRMATION MOT DE PASSE" />
                                     <HBox styleClass="input-box">
@@ -126,13 +116,13 @@
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez confirmer le mot de passe" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
                            </children>
                         </VBox>
                      </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
@@ -147,11 +137,11 @@
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <HBox>
+                  <HBox maxWidth="800.0">
                      <children>
-                        <VBox HBox.hgrow="ALWAYS">
+                        <VBox spacing="20.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="NOM" />
                                     <HBox styleClass="input-box">
@@ -166,11 +156,8 @@
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le nom" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="MAIL" />
                                     <HBox styleClass="input-box">
@@ -185,11 +172,8 @@
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mail" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
-                              <VBox>
+                              <VBox minHeight="75.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="NBRE DE NOMS" />
                                     <HBox maxWidth="1.7976931348623157E308" styleClass="input-box">
@@ -208,17 +192,14 @@
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entre le nom" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
                               </VBox>
                            </children>
                         </VBox>
-                        <VBox HBox.hgrow="ALWAYS">
+                        <VBox spacing="20.0" HBox.hgrow="ALWAYS">
                            <children>
                               <VBox>
                                  <children>
-                                    <VBox>
+                                    <VBox minHeight="75.0">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="PRENOM" />
                                           <HBox styleClass="input-box">
@@ -233,11 +214,8 @@
                                           </HBox>
                                           <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le prenom" />
                                        </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
                                     </VBox>
-                                    <VBox>
+                                    <VBox minHeight="75.0">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="TELEPHONE" />
                                           <HBox styleClass="input-box">
@@ -252,11 +230,8 @@
                                           </HBox>
                                           <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le téléphone" />
                                        </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
                                     </VBox>
-                                    <VBox>
+                                    <VBox minHeight="75.0">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="ROLE" />
                                           <HBox styleClass="input-box">
@@ -271,21 +246,21 @@
                                           </HBox>
                                           <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entre le nom" />
                                        </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
                                     </VBox>
                                  </children>
                               </VBox>
                            </children>
                         </VBox>
                      </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" spacing="25.0">
+      <HBox alignment="CENTER" maxWidth="800.0" spacing="25.0">
          <children>
             <Button fx:id="mainBtn" mnemonicParsing="false" styleClass="add-btn" text="Ajouter" />
             <Button fx:id="cancelBtn" mnemonicParsing="false" styleClass="cancel-btn" text="Annuler" />

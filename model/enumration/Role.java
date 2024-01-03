@@ -19,6 +19,9 @@ public  enum Role {
 		return name;
 	}
 	
+	public String toString() {
+		return name;
+	}
 	public static Role getRole(int id) {
 		if(id == 4) return Role.PRESIDENT;
 		if(id == 3) return Role.TREASURER;
@@ -26,4 +29,13 @@ public  enum Role {
 		if(id == 1) return Role.MEMBER;
 		return null;
 	}
+	public static Role getRole(String name) {
+		if(Role.PRESIDENT.getName().equals(name)) return Role.PRESIDENT;
+		if(Role.TREASURER.getName().equals(name)) return Role.TREASURER;
+		if(Role.SECRETARY.getName().equals(name)) return Role.SECRETARY;
+		if(Role.MEMBER.getName().equals(name)) return Role.MEMBER;
+		return null;
+	}
+	
+	
 }

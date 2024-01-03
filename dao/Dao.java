@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import sql.BdConnexion;
 public abstract class Dao <T>{
 
 	protected String table;
-	protected String bdName;
+	protected String idS;
 	protected Connection con = null;
 	
 	public Dao() throws SQLException{
@@ -32,7 +32,6 @@ public abstract class Dao <T>{
 //	public String genera
 	public T getLast() throws SQLException, EntityNotFoundException {
 		String sql = "SELECT `id` FROM " + table 
-				+ " ORDER BY `createdDate` DESC "
 				+ " LIMIT 1";
 		PreparedStatement pst = con.prepareStatement(sql);
 		ResultSet rs = pst.executeQuery();
@@ -57,6 +56,21 @@ public abstract class Dao <T>{
 				((AbstractEntity) array.get(array.size()-1)).setRow(array.size());
 		}
 		return (ArrayList<T>) array;
+	}
+	
+	private int getSize() throws SQLException {
+		String sql = "SELECT count(*) as nb FROM "+table+";";
+		PreparedStatement pst = con.prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		if(rs.next())
+			return rs.getInt("nb");
+		return 0;
+	}
+	public String generateId() throws SQLException {
+		String id = idS+"-";
+		id+= String.valueOf(LocalDate.now().getYear()).substring(1, 4) + "-";
+		id+= String.format("%03d", getSize());
+		return id;
 	}
 	
 }

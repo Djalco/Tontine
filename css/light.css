@@ -342,6 +342,13 @@ Button{
     -fx-padding: 5 0 5 5;
     -fx-max-width: 400;
 }
+.input-box-error{
+    -fx-border-color: red;	
+}
+.text-error{
+	-fx-fill: red;
+	-fx-font-size: 13;
+}
 .input{
     -fx-border-color: none;
     -fx-background-color: none;

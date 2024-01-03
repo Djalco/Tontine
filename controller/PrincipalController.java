@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controller.enumeration.State;
 import controller.generic.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,12 +28,12 @@ public class PrincipalController implements Initializable{
 
 	/*All pane for manage member*/
 	private VBox memberManage;
-	private VBox memberAdd;
+	private VBox member;
 	private VBox memberMore;
 	private VBox memberOverview;
 
 	private ManageControllerAbstract memberManageControl;
-	private EntityControllerAbstract memberAddControl;
+	private EntityControllerAbstract memberControl;
 	private MoreControllerAbstract memberMoreControl;
 	private OverviewControllerAbstract memberOverviewControl;
 
@@ -76,11 +77,24 @@ public class PrincipalController implements Initializable{
 	private VBox main;
 
 
-	private void switchPane(VBox child) {
+	private void switchPane(VBox child, String Entity, State state) {
 		main.getChildren().clear();
+		navigationControl.setEntity(Entity+"/");
+		navigationControl.setManageType(state.getName());
 		main.getChildren().addAll(navigation,child);
 		VBox.setVgrow(child, Priority.ALWAYS);
 	}
+
+
+	public <T> void switchPane(VBox child, EntityControllerAbstract<T> control, State state, T entity) throws Exception {
+		main.getChildren().clear();
+		navigationControl.setManageType(state.getName());
+		control.setEntity(entity);
+		control.setState(state);
+		main.getChildren().addAll(navigation,child);
+	}
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
@@ -90,9 +104,8 @@ public class PrincipalController implements Initializable{
 			setMember();
 
 
-			switchPane(memberManage);
+			switchPane(memberManage, "Utilisateur",State.GESTION);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -120,41 +133,57 @@ public class PrincipalController implements Initializable{
 		dashboard = load.load();
 		dashboardControl = load.getController();
 		sidebarControl.dasboard().setOnMouseClicked(e->{
-			switchPane(dashboard);
+			switchPane(dashboard, "Dasboard",State.NONE);
 		});
 
 	}
+	
+	
 
 	private void setMember() throws IOException {
 		FXMLLoader load1 = new FXMLLoader();
-		load1.setLocation(getClass().getResource("/view/user.fxml"));
+		load1.setLocation(getClass().getResource("/view/user_manage.fxml"));
 		memberManage = load1.load();
 		memberManageControl = load1.getController();
-		sidebarControl.memberManage().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		sidebarControl.memberManage().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
-		memberManageControl.getAdd().setOnMouseClicked(e->{
-			switchPane(memberAdd);
+		memberManageControl.getAdd().setOnAction(e->{
+			try {
+				memberControl.setState(State.ADD);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			switchPane(member,"Utilisateur",State.ADD);
 		});
 
 		FXMLLoader load2 = new FXMLLoader();
-		load2.setLocation(getClass().getResource("/view/user_add.fxml"));
-		memberAdd = load2.load();
-		memberAddControl = load2.getController();
-		sidebarControl.memberAdd().setOnMouseClicked(e->{
-			switchPane(memberAdd);
+		load2.setLocation(getClass().getResource("/view/user.fxml"));
+		member = load2.load();
+		memberControl = load2.getController();
+		memberManageControl.setPage(member);
+		memberManageControl.setController(this, memberControl);
+		sidebarControl.memberAdd().setOnAction(e->{
+			try {
+				memberControl.setState(State.ADD);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			navigationControl.setEntity("Utilisateur");
+			navigationControl.setManageType(State.ADD.getName());
+			switchPane(member, "Utilisateur", State.ADD);
 		});
 		
-		memberAddControl.getBackBtn().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		memberControl.getBackBtn().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 		
-		memberAddControl.getCancelBtn().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		memberControl.getCancelBtn().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 		
-		memberAddControl.getMoreBtn().setOnMouseClicked(e->{
-			switchPane(memberMore);
+		memberControl.getMoreBtn().setOnAction(e->{
+			switchPane(memberMore, "Utilisateur", State.GESTION);
 		});
 		
 
@@ -163,12 +192,12 @@ public class PrincipalController implements Initializable{
 		memberMore = load3.load();
 		memberMoreControl = load3.getController();
 		
-		memberMoreControl.getBackBtn().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		memberMoreControl.getBackBtn().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 		
-		memberMoreControl.getReturnBtn().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		memberMoreControl.getReturnBtn().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 		
 
@@ -176,16 +205,16 @@ public class PrincipalController implements Initializable{
 		load4.setLocation(getClass().getResource("/view/user_overview.fxml"));
 		memberOverview = load4.load();
 		memberOverviewControl = load4.getController();
-		sidebarControl.memberOverview().setOnMouseClicked(e->{
-			switchPane(memberOverview);
+		sidebarControl.memberOverview().setOnAction(e->{
+			switchPane(memberOverview, "Utilisateur", State.OVERVIEW);
 		});
 		
-		memberOverviewControl.getBackBtn().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		memberOverviewControl.getBackBtn().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 		
-		memberOverviewControl.getReturnBtn().setOnMouseClicked(e->{
-			switchPane(memberManage);
+		memberOverviewControl.getReturnBtn().setOnAction(e->{
+			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 
 	}

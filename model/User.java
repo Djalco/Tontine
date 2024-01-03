@@ -34,6 +34,9 @@ public class User extends AbstractEntity{
 		if(!users.contains(this))users.add(this);
 	}
 
+	public User() {
+	}
+
 	public String getLogin() {
 		return login;
 	}
@@ -75,6 +78,9 @@ public class User extends AbstractEntity{
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	public void setRole(String role) {
+		this.role = Role.getRole(role);
 	}
 	public int getNbPerson() {
 		return nbPerson;
@@ -123,6 +129,31 @@ public class User extends AbstractEntity{
 
 		public UserBuilder login(String login) {
 			this.login = login;
+			return this;
+		}
+
+		public UserBuilder firstname(String firstname) {
+			this.firstname = firstname;
+			return this;
+		}
+
+		public UserBuilder lastname(String lastname) {
+			this.lastname = lastname;
+			return this;
+		}
+
+		public UserBuilder password(String password) {
+			this.password = password;
+			return this;
+		}
+
+		public UserBuilder mail(String mail) {
+			this.mail = mail;
+			return this;
+		}
+
+		public UserBuilder phone(String phone) {
+			this.phone = phone;
 			return this;
 		}
 

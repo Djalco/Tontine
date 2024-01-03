@@ -63,4 +63,4 @@ CREATE TABLE `setting`(
 
 /* Table utilisateur*/
 INSERT INTO `user` (`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`, `nb_person`) VALUES 
-('usr-023-001', 'luffy', 'Monkey D', 'Luffy', '12345678', 'luffy@gmail.com', '6 90 18 53 35', 1, 3);
+('usr-023-001', 'luffy', 'Luffy', 'Monkey D', '12345678', 'luffy@gmail.com', '6 90 18 53 35', 1, 3);

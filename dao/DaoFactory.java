@@ -2,9 +2,6 @@ package dao;
 
 import java.sql.SQLException;
 
-import model.Cotisation;
-import model.User;
-
 public class DaoFactory {
 
 	public static CotisationDao getCotisationDao() throws SQLException{

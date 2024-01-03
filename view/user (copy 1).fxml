@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserAddController">
+<VBox spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -49,7 +49,7 @@
                      <children>
                         <VBox HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox>
+                              <VBox fx:id="login">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="LOGIN" />
                                     <HBox styleClass="input-box">
@@ -59,7 +59,7 @@
                                                 <Image url="@../img/login.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="login" promptText="luffy" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField promptText="luffy" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer l'identifiant" />
@@ -68,7 +68,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </VBox>
-                              <VBox>
+                              <VBox fx:id="password">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="MOT DE PASSE" />
                                     <HBox styleClass="input-box">
@@ -78,7 +78,7 @@
                                                 <Image url="@../img/password.png" />
                                              </image>
                                           </ImageView>
-                                          <PasswordField fx:id="password" promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <PasswordField promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mot de passe" />
@@ -92,7 +92,7 @@
                         <VBox HBox.hgrow="ALWAYS">
                            <children>
                               <VBox />
-                              <VBox>
+                              <VBox fx:id="mail">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="MAIL" />
                                     <HBox styleClass="input-box">
@@ -102,7 +102,7 @@
                                                 <Image url="@../img/phone.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="mail" promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mail" />
@@ -111,7 +111,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </VBox>
-                              <VBox>
+                              <VBox fx:id="verifyPassword">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="CONFIRMATION MOT DE PASSE" />
                                     <HBox styleClass="input-box">
@@ -121,7 +121,7 @@
                                                 <Image url="@../img/password.png" />
                                              </image>
                                           </ImageView>
-                                          <PasswordField fx:id="verifyPassword" promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <PasswordField promptText="mot de passe" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez confirmer le mot de passe" />
@@ -151,7 +151,7 @@
                      <children>
                         <VBox HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox>
+                              <VBox fx:id="lastname">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="NOM" />
                                     <HBox styleClass="input-box">
@@ -161,7 +161,7 @@
                                                 <Image url="@../img/name.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="lastname" promptText="Njotsa Ella" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField promptText="Njotsa Ella" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le nom" />
@@ -170,9 +170,9 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </VBox>
-                              <VBox>
+                              <VBox fx:id="phone">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="MAIL" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="TELEPHONE" />
                                     <HBox styleClass="input-box">
                                        <children>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -180,16 +180,62 @@
                                                 <Image url="@../img/phone.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="mail" promptText="brondon@gmail.com" styleClass="input" HBox.hgrow="ALWAYS" />
+                                          <TextField promptText="6 90 18 53 35" styleClass="input" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le mail" />
+                                    <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le téléphone" />
                                  </children>
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </VBox>
+                              <VBox fx:id="role">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="ROLE" />
+                                    <HBox styleClass="input-box">
+                                       <children>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/role_2.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ComboBox maxWidth="1.7976931348623157E308" styleClass="input" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                    <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entre le nom" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
                               <VBox>
+                                 <children>
+                                    <VBox fx:id="firstname">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="PRENOM" />
+                                          <HBox styleClass="input-box">
+                                             <children>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../img/name.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <TextField promptText="Brondon" styleClass="input" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le prenom" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="noms">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="NBRE DE NOMS" />
                                     <HBox maxWidth="1.7976931348623157E308" styleClass="input-box">
@@ -211,71 +257,6 @@
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <VBox HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox>
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="PRENOM" />
-                                          <HBox styleClass="input-box">
-                                             <children>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/name.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <TextField fx:id="firstname" promptText="Brondon" styleClass="input" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                          <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le prenom" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
-                                    </VBox>
-                                    <VBox>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="TELEPHONE" />
-                                          <HBox styleClass="input-box">
-                                             <children>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/phone.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <TextField fx:id="phone" promptText="6 90 18 53 35" styleClass="input" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                          <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entrer le téléphone" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
-                                    </VBox>
-                                    <VBox>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input-title" text="ROLE" />
-                                          <HBox styleClass="input-box">
-                                             <children>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/role_2.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <ComboBox fx:id="role" maxWidth="1.7976931348623157E308" styleClass="input" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                          <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez entre le nom" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
                               </VBox>
                            </children>
                         </VBox>

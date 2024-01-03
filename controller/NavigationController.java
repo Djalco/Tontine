@@ -26,5 +26,13 @@ public class NavigationController {
     void showSetting(ActionEvent event) {
 
     }
+    
+    public void setEntity(String text) {
+    	entity.setText(text);
+    }
+    
+    public void setManageType(String text) {
+    	manageType.setText(text);
+    }
 
 }

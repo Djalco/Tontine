@@ -13,12 +13,24 @@ public class UserDao extends Dao<User> {
 	public UserDao() throws SQLException {
 		super();
 		table = "user";
-		bdName="usr";
+		idS="usr";
 	}
 
 	@Override
 	public User create(User obj) throws SQLException, EntityNotFoundException {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO `user`(`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`, `nb_person`) VALUES "
+				+ "(?,?,?,?,?,?,?,?,?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, generateId());
+		ps.setString(2, obj.getLogin());
+		ps.setString(3, obj.getFirstname());
+		ps.setString(4, obj.getLastname());
+		ps.setString(5, obj.getPassword());
+		ps.setString(6, obj.getMail());
+		ps.setString(7, obj.getPhone());
+		ps.setInt(8, obj.getRole().getId());
+		ps.setInt(9, obj.getNbPerson());
+		ps.executeUpdate();
 		return getLast();
 	}
 
@@ -36,10 +48,16 @@ public class UserDao extends Dao<User> {
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
 			return new User(new UserBuilder().id(rs.getString("id"))
-					
+					.login(rs.getString("login"))
+					.firstname(rs.getString("firstname"))
+					.lastname(rs.getString("lastname"))
+					.password(rs.getString("password"))
+					.mail(rs.getString("mail"))
+					.phone(rs.getString("phone"))
+					.role(rs.getInt("role"))
 					.nbPerson(rs.getInt("nb_person")));
 		}
-		throw new EntityNotFoundException("Employe non trouvé");
+		throw new EntityNotFoundException("Utilisateur non trouvé");
 	}
 
 }
