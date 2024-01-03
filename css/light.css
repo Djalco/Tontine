@@ -18,6 +18,43 @@ Button{
 	-fx-background-color:  -fx-primary-button-color;
 	-fx-cursor: hand;
 }
+
+.menu-button{
+	-fx-background-color: none;
+}
+
+.menu-button .arrow-button{
+	-fx-padding: 0;
+}
+
+.menu-button .arrow-button .arrow{
+	-fx-padding: 0;
+}
+.menu-button .context-menu{
+	-fx-padding: 0;
+}
+.menu-button .menu-item{
+	-fx-text-fill: green;
+	-fx-background-color: #f9fafb;
+    -fx-text-background-color: #697a8d;
+    -fx-border-color: -fx-color-border;
+}
+.menu-button .menu-item:odd{
+    -fx-background-color: #fff;
+    -fx-text-background-color: #697a8d;
+}
+.menu-button .menu-item .label{
+	-fx-text-fill: -fx-title-muted;
+	-fx-font-weight: bold;
+	
+}
+/*Edit Cell Color Only when selected */
+.menu-button .menu-item:selected{
+-fx-background-color:transparent; 
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 5 0 0 5;
+}
+
 .sidebar{
 	-fx-padding: 25 0 25 0;
 	-fx-background-color: white;
@@ -313,9 +350,9 @@ Button{
     -fx-text-background-color: #697a8d;
 }
 /*Edit Cell Color Only when cursor hover cell */
-.combo-box .list-cell:hover{
+/*.combo-box .list-cell:hover{
 -fx-background-color:green;
-}
+}*/
 /*Edit Cell Color Only when selected */
 .combo-box .list-cell:selected{
 -fx-background-color:transparent; 

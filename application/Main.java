@@ -1,10 +1,14 @@
 package application;
 	
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import sql.DatabaseInitializer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.fxml.FXMLLoader;
 
 

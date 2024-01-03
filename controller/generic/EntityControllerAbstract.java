@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import controller.PrincipalController;
 import controller.enumeration.State;
 import dao.Dao;
 import exception.EntityNotFoundException;
@@ -21,6 +22,12 @@ import util.Validator;
 public abstract class EntityControllerAbstract<T> implements Initializable{
 
 	protected Dao<T> dao;
+
+	private VBox page;
+
+	private PrincipalController principal;
+
+	private ManageControllerAbstract<T> manageController;
 
 	protected State state;
 	
@@ -136,6 +143,15 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 
 	public void closeUpdate() {
 		isUpdate = false;
+	}
+
+	public void setPage(VBox page) {
+		this.page = page;
+	}
+
+	public void setController(PrincipalController principal, ManageControllerAbstract<T> manageController) {
+		this.principal = principal;
+		this.manageController = manageController;
 	}
 
 
@@ -269,10 +285,14 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 			mainBtn.setOnAction(e->{
 				try {
 					buildEntity();
-					if(state == State.ADD)
+					if(state == State.ADD) {
 						entity = dao.create(entity);
-					else if(state == State.MODIFY)
+						principal.backPane(page, manageController, state, "Utilisateur ajouté avec succès");
+					}
+					else if(state == State.MODIFY) {
 						entity = dao.update(entity);
+						principal.backPane(page, manageController, state, "Utilisateur modifié avec succès");
+					}
 					isUpdate = true;
 					backBtn.fire();
 				} catch (SQLException e1) {
