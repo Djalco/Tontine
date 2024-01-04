@@ -14,5 +14,10 @@ public class Tontine extends AbstractEntity{
 	public Tontine() {
 		super();
 	}
+
+	@Override
+	public void setEntity(AbstractEntity t) {
+		
+	}
     
 }

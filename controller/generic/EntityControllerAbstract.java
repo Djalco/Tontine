@@ -2,6 +2,8 @@ package controller.generic;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import controller.PrincipalController;
@@ -23,6 +25,8 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 
 	protected Dao<T> dao;
 
+	protected Map<VBox, Validator> validates;
+
 	private VBox page;
 
 	private PrincipalController principal;
@@ -30,7 +34,7 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 	private ManageControllerAbstract<T> manageController;
 
 	protected State state;
-	
+
 	protected boolean isUpdate = false;
 
 	protected T entity; 
@@ -181,7 +185,15 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 				hbox.getStyleClass().add("input-box-error");
 			}
 
+			try {
+				mainBtn.setDisable(!isValidForm());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+
 		});
+
+		validates.put(vbox, validator);
 	}
 
 	protected void setValidatorPassword(VBox vbox_1, Validator validator_1,VBox vbox_2, Validator validator_2) throws Exception {
@@ -216,6 +228,7 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 
 				Text text_2 = new Text();
 				text_2.getStyleClass().add("text-error");
+				hbox_2.getStyleClass().add("input-box-error");
 				text_2.setText(validator_2.getEmptyMsg());
 				vbox_2.getChildren().add(text_2);
 
@@ -225,12 +238,17 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 				hbox_1.getStyleClass().add("input-box-error");
 			}
 
+			try {
+				mainBtn.setDisable(!isValidForm());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		});
 
 		field_2.setOnKeyReleased(e->{
 			HBox hbox = (HBox) vbox_2.getChildren().get(1);
 			hbox.getStyleClass().remove("input-box-error");
-			
+
 			if(vbox_2.getChildren().size() == 3)
 				vbox_2.getChildren().remove(2);
 
@@ -241,12 +259,22 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 				text_2.setText(validator_2.getEmptyMsg());
 				vbox_2.getChildren().add(text_2);
 				hbox.getStyleClass().add("input-box-error");
+				mainBtn.setDisable(true);
+			}
 
+			try {
+				mainBtn.setDisable(!isValidForm());
+			} catch (Exception e1) {
+				e1.printStackTrace();
 			}
 		});
+
+		validates.put(vbox_1, validator_1);
+		validates.put(vbox_2, validator_2);
 	}
 
 	public void init() throws Exception {
+		removeError();
 		if(state == State.ADD) {
 			if(!((HBox) cancelBtn.getParent()).getChildren().contains(mainBtn))
 				((HBox) cancelBtn.getParent()).getChildren().add(0,mainBtn);
@@ -255,6 +283,7 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 			clearField();
 			disableField(false);
 			moreBtn.setVisible(false);
+			mainBtn.setDisable(true);
 		}
 		if(state == State.MODIFY) {
 			if(!((HBox) cancelBtn.getParent()).getChildren().contains(mainBtn))
@@ -275,10 +304,33 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 
 	}
 
+	private boolean isValidForm() throws Exception {
+		boolean valid = true;
+		for(Map.Entry<VBox, Validator> entry: validates.entrySet()) {
+			String text = getTexteField(entry.getKey()).getText();
+			Validator validator = entry.getValue();
+			valid = (validator.isValid(text))?valid:false;
+		}
+		return valid;
+	}
+
+	public void removeError() {
+		for(Map.Entry<VBox, Validator> entry: validates.entrySet()) {
+			VBox vbox = entry.getKey();
+			HBox hbox = (HBox) vbox.getChildren().get(1);
+			hbox.getStyleClass().remove("input-box-error");
+			if(vbox.getChildren().size() == 3)
+				vbox.getChildren().remove(2);
+
+		}
+
+	}
+
 	protected abstract void initComponent() throws Exception;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		validates = new HashMap<VBox, Validator>();
 		try {
 			setDao();
 			initComponent();
@@ -286,11 +338,12 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 				try {
 					buildEntity();
 					if(state == State.ADD) {
-						entity = dao.create(entity);
+						manageController.addObj(dao.create(entity));
 						principal.backPane(page, manageController, state, "Utilisateur ajouté avec succès");
+						mainBtn.setDisable(true);
 					}
 					else if(state == State.MODIFY) {
-						entity = dao.update(entity);
+						manageController.replaceObj(dao.update(entity));
 						principal.backPane(page, manageController, state, "Utilisateur modifié avec succès");
 					}
 					isUpdate = true;

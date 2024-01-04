@@ -41,6 +41,13 @@ public class Loan extends ManagePayment{
 		return DaoFactory.getSessionDao().find(sessionSold);
 	}
 
+	@Override
+	public void setEntity(AbstractEntity t) {
+		super.createEntity(t);
+		Loan l = (Loan) t;
+		amount = l.amount;
+		sessionSold = l.sessionSold;
+	}   
 	
 	
 	

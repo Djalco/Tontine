@@ -36,7 +36,28 @@ public class UserDao extends Dao<User> {
 
 	@Override
 	public User update(User obj) throws SQLException, EntityNotFoundException {
-		// TODO Auto-generated method stub
+		String sql = "UPDATE `user` SET "
+				+ "`login`=?,"
+				+ "`firstname`=?,"
+				+ "`lastname`=?,"
+				+ "`password`=?,"
+				+ "`mail`=?,"
+				+ "`phone`=?,"
+				+ "`role`=?,"
+				+ "`nb_person`=? "
+				+ "WHERE `id` = ?; ";
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		ps.setString(1, obj.getLogin());
+		ps.setString(2, obj.getFirstname());
+		ps.setString(3, obj.getLastname());
+		ps.setString(4, obj.getPassword());
+		ps.setString(5, obj.getMail());
+		ps.setString(6, obj.getPhone());
+		ps.setInt(7, obj.getRole().getId());
+		ps.setInt(8, obj.getNbPerson());
+		ps.setString(9, obj.getId());
+		ps.executeUpdate();
 		return find(obj.getId());
 	}
 

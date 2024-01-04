@@ -26,6 +26,14 @@ public class Contribution extends ManagePayment{
 
 	public Session getSessionContributed() throws SQLException {
 		return DaoFactory.getSessionDao().find(sessionContributed);
+	}
+
+	@Override
+	public void setEntity(AbstractEntity t) {
+		super.createEntity(t);
+		Contribution c = (Contribution) t;
+		sessionContributed = c.sessionContributed;
+		
 	}   
 	
 	

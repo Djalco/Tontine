@@ -296,6 +296,7 @@ Button{
     -fx-background-color: none;
     -fx-alignment: center_right;
     -fx-content-display: right;
+    -fx-text-fill: -fx-title-bold;
 }
 
 .menu .menu-item Circle{

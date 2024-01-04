@@ -47,6 +47,11 @@ public class Session extends AbstractEntity{
 	private List<Cotisation> getCotisations() throws SQLException {
 		return DaoFactory.getCotisationDao().findBySession(id);
 	}
+
+	@Override
+	public void setEntity(AbstractEntity t) {
+		
+	}
 	
 	
 	

@@ -7,7 +7,7 @@ import java.util.List;
 import dao.DaoFactory;
 import model.enumration.ManagePaymentType;
 
-public class ManagePayment extends AbstractEntity{
+public abstract class ManagePayment extends AbstractEntity{
 	private static List<ManagePayment> sessions = new ArrayList<ManagePayment>();
 	
 	protected String session;
@@ -34,6 +34,13 @@ public class ManagePayment extends AbstractEntity{
 
 	public Session getSession() throws SQLException {
 		return DaoFactory.getSessionDao().find(session);
+	}
+	
+	public void createEntity(AbstractEntity t) {
+		ManagePayment m = (ManagePayment) t;
+		session = m.session;
+		user = m.user;
+		managePaymentType = m.managePaymentType;
 	}
 	
 }

@@ -21,9 +21,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.AbstractEntity;
 import model.User;
 
 public abstract class ManageControllerAbstract<T> implements Initializable{
@@ -76,6 +79,22 @@ public abstract class ManageControllerAbstract<T> implements Initializable{
 		this.entityController = entityController;
 	}
 
+	public void replaceObj(T obj) {
+		for(T e: table.getItems())
+			if(((AbstractEntity)e).equals((AbstractEntity) obj)){
+				((AbstractEntity)e).setEntity((AbstractEntity) obj);
+				
+				break;
+			}
+		for(T e: table.getItems())
+			System.out.println(((User)e).getLogin());
+		table.refresh();
+	}
+
+	public void addObj(T obj) {
+		((AbstractEntity) obj).setRow(table.getItems().size()+1);
+		table.getItems().add(obj);
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -112,10 +131,13 @@ public abstract class ManageControllerAbstract<T> implements Initializable{
 					protected void updateItem(String item, boolean empty) {
 						super.updateItem(item, empty);
 						if(item!=null) {
-							MenuButton menuBtn = new MenuButton("Action");
+							MenuButton menuBtn = new MenuButton();
 							menuBtn.getItems().addAll(new MenuItem("Détail"),new MenuItem("Modifier"),new MenuItem("Supprimer"));
 							HBox hb = new HBox();
-							menuBtn.getStyleClass().add("btnSave");
+							menuBtn.setGraphic(new ImageView());
+							((ImageView) menuBtn.getGraphic()).setImage(new Image(getClass().getResourceAsStream("/img/more.png")));
+							((ImageView) menuBtn.getGraphic()).setFitWidth(20);
+							((ImageView) menuBtn.getGraphic()).setFitHeight(20);
 							hb.getChildren().add(menuBtn);
 							hb.setAlignment(Pos.CENTER);
 							hb.setSpacing(10);

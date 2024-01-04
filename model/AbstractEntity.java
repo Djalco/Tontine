@@ -7,6 +7,7 @@ public abstract class AbstractEntity {
 	protected String id;
 	protected int row;
 	
+	
 	public AbstractEntity(String id) {
 		super();
 		this.id = id;
@@ -29,6 +30,7 @@ public abstract class AbstractEntity {
 		this.row = row;
 	}
 
+	public abstract void setEntity(AbstractEntity t);
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

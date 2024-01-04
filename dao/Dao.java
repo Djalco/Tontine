@@ -32,7 +32,7 @@ public abstract class Dao <T>{
 //	public String genera
 	public T getLast() throws SQLException, EntityNotFoundException {
 		String sql = "SELECT `id` FROM " + table 
-				+ " LIMIT 1";
+				+ " ORDER BY `id` desc LIMIT 1";
 		PreparedStatement pst = con.prepareStatement(sql);
 		ResultSet rs = pst.executeQuery();
 		if (rs.next()) return find(rs.getString("id"));
@@ -63,7 +63,7 @@ public abstract class Dao <T>{
 		PreparedStatement pst = con.prepareStatement(sql);
 		ResultSet rs = pst.executeQuery();
 		if(rs.next())
-			return rs.getInt("nb");
+			return rs.getInt("nb") + 1;
 		return 0;
 	}
 	public String generateId() throws SQLException {

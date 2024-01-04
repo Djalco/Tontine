@@ -56,4 +56,9 @@ public class Sanction extends AbstractEntity{
 		return 0;
 	}
 
+	@Override
+	public void setEntity(AbstractEntity t) {
+		
+	}
+
 }

@@ -140,10 +140,14 @@ public class UserController extends EntityControllerAbstract<User>{
 		entity.setLogin(getTexteField(login).getText());
 		entity.setMail(getTexteField(mail).getText());
 		entity.setPassword(getTexteField(password).getText());
-		entity.setLastname(getTexteField(login).getText());
-		entity.setFirstname(getTexteField(login).getText());
-		entity.setPhone(getTexteField(login).getText());
-		entity.setRole((String) getComboBox(role).getSelectionModel().getSelectedItem());
+		entity.setLastname(getTexteField(lastname).getText());
+		entity.setFirstname(getTexteField(firstname).getText());
+		entity.setPhone(getTexteField(phone).getText());
+		try {
+			entity.setRole((Role) getComboBox(role).getSelectionModel().getSelectedItem());
+		}catch(Exception e) {
+			entity.setRole((String) getComboBox(role).getSelectionModel().getSelectedItem());
+		}
 		entity.setNbPerson(getSpinner(noms).getValue());
 		}
 

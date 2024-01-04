@@ -54,6 +54,10 @@ public class Validator {
 	public boolean isValidRegex(String text) {
 		return regex.matcher(text).find();
 	}
+	
+	public boolean isValid(String text) {
+		return text.length() >= length && regex.matcher(text).find();
+	}
 
 	public static enum RegexType{
 		LOGIN("^[a-z][a-z0-9]{0,}$"), 

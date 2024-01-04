@@ -168,5 +168,20 @@ public class User extends AbstractEntity{
 	}
 
 
+	@Override
+	public void setEntity(AbstractEntity t) {
+		User u = (User) t;
+
+		login = u.login;
+		firstname = u.firstname;
+		lastname = u.lastname;
+		password = u.password;
+		mail = u.mail;
+		phone = u.phone;
+		role = u.role;
+		nbPerson = u.nbPerson;
+	}
+
+
 
 }

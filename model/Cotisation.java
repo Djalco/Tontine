@@ -29,6 +29,15 @@ public class Cotisation extends AbstractEntity{
 	public ManagePayment getManagePayment() throws SQLException {
 		return DaoFactory.getManagePaymentDao().find(managePayment);
 	}
+
+	@Override
+	public void setEntity(AbstractEntity t) {
+		Cotisation c = (Cotisation) t;
+		user = c.user;
+		session = c.session;
+		managePayment = c.managePayment;
+		
+	}
 	
 	
 }
