@@ -12,7 +12,7 @@ CREATE TABLE `user`(
 );
 
 CREATE TABLE `session`(
-	`id` 			VARCHAR(20) PRIMARY KEY,
+	`id` VARCHAR(20) PRIMARY KEY,
 	`num_session` 	INT NOT NULL,
 	`date_session` 	DATETIME NOT NULL,
 	`is_actif`  	int NOT NULL DEFAULT 1
@@ -27,11 +27,22 @@ CREATE TABLE `ManagePayment`(
 	FOREIGN KEY (`session`) REFERENCES `session`(`id`)
 );
 
+CREATE TABLE `Cotisation`(
+	`id` VARCHAR(20) PRIMARY KEY,
+        `user` VARCHAR(20) NOT NULL,
+	`session` VARCHAR(20) NOT NULL,
+	
+	`is_actif`  int NOT NULL DEFAULT 1,
+	FOREIGN KEY (`user`) REFERENCES `user`(`id`),
+	FOREIGN KEY (`session`) REFERENCES `session`(`id`)
+);
+
 CREATE TABLE `loan`(
 	`id` VARCHAR(20) PRIMARY KEY,
+        `cotisation` VARCHAR(20) NOT NULL, 
 	`amount` int NOT NULL,
 	`session_sold` VARCHAR(20) NOT NULL,
-	FOREIGN KEY (`id`) REFERENCES `ManagePayment`(`id`),
+	FOREIGN KEY (`cotisation`) REFERENCES `Cotisation`(`id`),
 	FOREIGN KEY (`session_sold`) REFERENCES `session`(`id`)
 );
 

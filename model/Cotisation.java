@@ -10,25 +10,23 @@ public class Cotisation extends AbstractEntity{
 	private String session;
 	private String managePayment;
 	
-	public Cotisation(String id, String user, String session,
-			String managePayment) {
+	public Cotisation(String id, String user, String session) {
 		super(id);
 		this.user = user;
 		this.session = session;
-		this.managePayment = managePayment;
 	}
 
 	public User getUser() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getUserDao().find(user);
 	}
 
-	public Session getSession() throws SQLException {
+	public Session getSession() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(session);
 	}
 
-	public ManagePayment getManagePayment() throws SQLException {
-		return DaoFactory.getManagePaymentDao().find(managePayment);
-	}
+//	public ManagePayment getManagePayment() throws SQLException, EntityNotFoundException {
+//		return (ManagePayment) DaoFactory.getManagePaymentDao().find(managePayment);
+//	}
 
 	@Override
 	public void setEntity(AbstractEntity t) {
@@ -38,6 +36,11 @@ public class Cotisation extends AbstractEntity{
 		managePayment = c.managePayment;
 		
 	}
+
+    @Override
+    public String toString() {
+        return "Cotisation{" + "user=" + user + ", session=" + session ;
+    }
 	
 	
 }

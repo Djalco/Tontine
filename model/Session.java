@@ -40,6 +40,18 @@ public class Session extends AbstractEntity{
 		return dateSession;
 	}
 
+    public static void setSessions(List<Session> sessions) {
+        Session.sessions = sessions;
+    }
+
+    public void setNumSession(int numSession) {
+        this.numSession = numSession;
+    }
+
+    public void setDateSession(LocalDate dateSession) {
+        this.dateSession = dateSession;
+    }
+
 	public LocalDate getNextSession() {
 		return null;
 	}
@@ -52,6 +64,11 @@ public class Session extends AbstractEntity{
 	public void setEntity(AbstractEntity t) {
 		
 	}
+
+    @Override
+    public String toString() {
+        return "Session{" + "numSession=" + numSession + ", dateSession=" + dateSession + '}';
+    }
 	
 	
 	

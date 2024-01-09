@@ -1,6 +1,6 @@
 package dao;
 
-import enumration.ManagePaymentType;
+import model.enumration.ManagePaymentType;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +11,7 @@ import model.AbstractEntity;
 import model.Cotisation;
 import model.ManagePayment;
 
-public class ManagePaymentDao extends Dao<ManagePayment> {
+public abstract class ManagePaymentDao<T extends ManagePayment> extends Dao<T>{
 
 	public ManagePaymentDao() throws SQLException {
 		super();
@@ -44,27 +44,23 @@ public class ManagePaymentDao extends Dao<ManagePayment> {
 		ps.setString(1, generateId());
 		ps.setString(2, obj.getSession().getId());
 		ps.setString(3, obj.getUser().getId());
-		//ps.setInt(4, obj.getManagement().getId());
+		//ps.setInt(4, obj.getManagePaymentType().getId());
                 ps.executeUpdate();
                 return find(obj.getId());
 	}
 
-	@Override
-	public ManagePayment find(String id) throws SQLException, EntityNotFoundException {
-		String sql = "SELECT * FROM `"+table+"` WHERE id = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, id);
-		ResultSet rs = ps.executeQuery();
-		if (rs.next()) {
-			return new ManagePayment(rs.getString("id"),rs.getString("session"),rs.getString("user"),rs.getInt("managementPaymentType")) {
-                            @Override
-                            public void setEntity(AbstractEntity t) {
-                                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                            }
-                        } ;
-		}
-		throw new EntityNotFoundException("aucune info dispo");
-        }
+//	@Override
+//	public ManagePayment find(String id) throws SQLException, EntityNotFoundException {
+//		String sql = "SELECT * FROM `"+table+"` WHERE id = ?";
+//		PreparedStatement ps = con.prepareStatement(sql);
+//		ps.setString(1, id);
+//		ResultSet rs = ps.executeQuery();
+//		if (rs.next()) {
+//			return new ManagePayment(rs.getString("id"),rs.getString("session"),rs.getString("user"),rs.getInt("managementPaymentType")) ;
+//                           
+//		
+//		throw new EntityNotFoundException("aucune info dispo");
+//        }
 
 	public List<ManagePayment> findBySession(String cotisation) {
 		// TODO Auto-generated method stub

@@ -19,9 +19,9 @@ public class DaoFactory {
 	}
 
 
-	public static ManagePaymentDao getManagePaymentDao() throws SQLException{
-		return new ManagePaymentDao();
-	}
+//	public static ManagePaymentDao getManagePaymentDao() throws SQLException{
+//		return new ManagePaymentDao() {};
+//	}
 
 
 	public static LoanDao getLoanDao() throws SQLException{

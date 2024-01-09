@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 
 import dao.DaoFactory;
+import exception.EntityNotFoundException;
 import model.enumration.PaymentType;
 
 public class Loan extends ManagePayment{
@@ -10,9 +11,9 @@ public class Loan extends ManagePayment{
      private int amount;
      private String sessionSold;
 
-	public Loan(String id, String session, String cotisation, int managePaymentType, String id_, int amount,
+	public Loan(String id,  String cotisation, int amount,
 			String sessionSold) {
-		super(id, session, cotisation, managePaymentType);
+		//super(id, session, cotisation);
 		this.amount = amount;
 		this.sessionSold = sessionSold;
 	}
@@ -25,19 +26,19 @@ public class Loan extends ManagePayment{
         
     }
 
-	public static PaymentType getPaymentType() {
-		return paymentType;
-	}
-
-	public static void setPaymentType(PaymentType paymentType) {
-		Loan.paymentType = paymentType;
-	}
+//	public static PaymentType getPaymentType() {
+//		return paymentType;
+//	}
+//
+//	public static void setPaymentType(PaymentType paymentType) {
+//		Loan.paymentType = paymentType;
+//	}
 
 	public int getAmount() {
 		return amount;
 	}
 
-	public Session getSessionSold() throws SQLException {
+	public Session getSessionSold() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(sessionSold);
 	}
 

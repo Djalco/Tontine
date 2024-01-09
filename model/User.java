@@ -89,9 +89,9 @@ public class User extends AbstractEntity{
 		this.nbPerson = nbPerson;
 	}
 
-	private List<ManagePayment> getManagePaymeny() throws SQLException {
-		return DaoFactory.getManagePaymentDao().findByUser(id);
-	}
+//	private List<ManagePayment> getManagePaymeny() throws SQLException {
+//		return DaoFactory.getManagePaymentDao().findByUser(id);
+//	}
 
 	public static User getUserConnected() {
 		return userConnected;
