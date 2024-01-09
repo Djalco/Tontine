@@ -11,12 +11,13 @@ import model.ManagePayment;
 public class LoanDao extends /*ManagePayment*/Dao<Loan> {
     public LoanDao() throws SQLException {
 		super();
-		table = "cotisation";
-		idS="cot";
+		table = "Loan";
+		idS="loan";
 	}
 
     public Loan create(Loan obj) throws SQLException, EntityNotFoundException {
-      String sql = "INSERT INTO `loan`(`id`, `cotisation`,'amount','session_sold) VALUES "
+  
+      String sql = "INSERT INTO `Loan`(`id`, `cotisation`, `amount` `session_sold`) VALUES "
 				+ "(?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, generateId());
@@ -29,11 +30,11 @@ public class LoanDao extends /*ManagePayment*/Dao<Loan> {
     }
 
     public Loan update(Loan obj) throws SQLException, EntityNotFoundException {
-       String sql = "UPDATE `cotisation` SET "
-				+ "`cotisation`=?,"
+       String sql = "UPDATE `Loan` SET "
+				+ "`cotisation`=?, "
                                // + "`managementPaymentType`=?,"
-                                + "`amount`=?,"
-                                + "`session_sold`=?,"
+                                + "`amount`=?, "
+                                + "`session_sold`=?, "
 				+ "WHERE `id` = ?; ";
 		PreparedStatement ps = con.prepareStatement(sql);
 

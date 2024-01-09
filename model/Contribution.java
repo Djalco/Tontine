@@ -14,48 +14,30 @@ import model.enumration.ManagePaymentType;
 
 public class Contribution /*extends ManagePayment*/{
         private String id;
-        private LocalDate createDate;
-        private LocalDate lastModifyDate;
-        private int amont;
-        private String session;
-        private String cotisation;
+	private String sessionContributed;
+	
+	public Contribution(String id,/* LocalDate createdDate, LocalDate lastModifyDate, int amont, 
+                                    String cotisation, */String sessionContributed) {
+		//super(id, session, cotisation,ManagePaymentType.CONTRIBUTION.getId());
+		this.sessionContributed = sessionContributed;
+	}
 
     public String getId() {
         return id;
     }
 
-    public LocalDate getCreateDate() {
-        return createDate;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public LocalDate getLastModifyDate() {
-        return lastModifyDate;
+    public void setSessionContributed(String sessionContributed) {
+        this.sessionContributed = sessionContributed;
     }
-
-    public int getAmont() {
-        return amont;
-    }
-
-    public String getSession() {
-        return session;
-    }
-
-    public String getCotisation() {
-        return cotisation;
-    }
-	private String sessionContributed;
-	
-	public Contribution(String id, LocalDate createdDate, LocalDate lastModifyDate, int amont, 
-                                    String session, String cotisation, String sessionContributed) {
-		//super(id, session, cotisation,ManagePaymentType.CONTRIBUTION.getId());
-		this.sessionContributed = sessionContributed;
-	}
 
 	public Contribution() {
 		super();
 	}
-        
-        
+
 	public Session getSessionContributed() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(sessionContributed);
 	}
@@ -67,6 +49,11 @@ public class Contribution /*extends ManagePayment*/{
 		sessionContributed = c.sessionContributed;
 		
 	}   */
+
+    @Override
+    public String toString() {
+        return "Contribution{" + "id=" + id + ", sessionContributed=" + sessionContributed + '}';
+    }
 	
 	
 	

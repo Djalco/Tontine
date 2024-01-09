@@ -1,6 +1,7 @@
 package application;
 	
 
+import dao.ContributionDao;
 import dao.CotisationDao;
 import dao.LoanDao;
 import dao.SessionDao;
@@ -14,6 +15,7 @@ import sql.DatabaseInitializer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import model.Contribution;
 import model.Cotisation;
 import model.Loan;
 import model.Session;
@@ -50,14 +52,27 @@ public class Main extends Application {
              c1.create(new Cotisation("dt","usr-024-44","sess-024-003"));
              c1.create(new Cotisation("dt","usr-024-42","sess-024-005"));
              c1.create(new Cotisation("dt","usr-024-40","sess-024-002"));
-             c1.create(new Cotisation("dt","usr-024-45","sess-024-004"));
-           
-             c1.find("cot-024-002");
-             c1.find("cot-024-005");
-            
-             LoanDao l = new LoanDao();
+             Cotisation cc = (new Cotisation("dt","usr-024-45","sess-024-004"));
+//           cc.setSession("sess-024-005");
+//         c1.update(cc);
+         //c1.find("cot-024-002");
+            //System.out.println(c1.find("cot-024-002"));
+            System.out.println(c1.find("cot-024-002"));
+            LoanDao l = new LoanDao();
              l.create(new Loan("lt", "cot-024-002", 1000,"sess-024-004"));
+            ContributionDao co = new ContributionDao();
              
-
+             co.create(new Contribution("st",/*LocalDate.now(),LocalDate.now(),1000,"cot-024-002",*/"sess-024-004"));
+             co.create(new Contribution("st",/*LocalDate.now(),LocalDate.now(),1000,"cot-024-002",*/"sess-024-001"));
+            co.create(new Contribution("st",/*LocalDate.now(),LocalDate.now(),1000,"cot-024-002",*/"sess-024-005"));
+             co.create(new Contribution("st",/*LocalDate.now(),LocalDate.now(),1000,"cot-024-002",*/"sess-024-002"));
+             co.create(new Contribution("st",/*LocalDate.now(),LocalDate.now(),1000,"cot-024-002",*/"sess-024-003"));
+           Contribution c = new Contribution("st",/*LocalDate.now(),LocalDate.now(),1000,"cot-024-002",*/"sess-024-004");
+           c.setSessionContributed("sess-024-005");
+           //co.update(c);
+          //co.find("sess-024-005");
+           //co.find("sess-024-003");
+            System.out.println(co.find("sess-024-003"));
+            System.out.println(co.update(c));
 	}
 }

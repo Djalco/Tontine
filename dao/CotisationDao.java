@@ -57,7 +57,7 @@ public class CotisationDao extends Dao<Cotisation>{
 			return new Cotisation(rs.getString("id"),rs.getString("user"),rs.getString("session")/*,rs.getString("managementPayment")*/);
 					
 		}
-		throw new EntityNotFoundException("Utilisateur non trouvé");
+		throw new EntityNotFoundException("info cot non trouvé");
 	}
 	
 

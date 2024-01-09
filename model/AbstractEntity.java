@@ -30,8 +30,7 @@ public abstract class AbstractEntity {
 		this.row = row;
 	}
 
-	public abstract void setEntity(AbstractEntity t);
-	@Override
+		@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}

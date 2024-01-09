@@ -49,8 +49,8 @@ CREATE TABLE `loan`(
 CREATE TABLE `contribution`(
 	`id` VARCHAR(20) PRIMARY KEY,
 	`session_contributed` VARCHAR(20) NOT NULL,
-	FOREIGN KEY (`id`) REFERENCES `ManagePayment`(`id`),
 	FOREIGN KEY (`session_contributed`) REFERENCES `session`(`id`)
+
 );
 
 CREATE TABLE `sanction`(

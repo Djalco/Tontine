@@ -28,7 +28,6 @@ public class Cotisation extends AbstractEntity{
 //		return (ManagePayment) DaoFactory.getManagePaymentDao().find(managePayment);
 //	}
 
-	@Override
 	public void setEntity(AbstractEntity t) {
 		Cotisation c = (Cotisation) t;
 		user = c.user;
@@ -36,6 +35,18 @@ public class Cotisation extends AbstractEntity{
 		managePayment = c.managePayment;
 		
 	}
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
+    }
+
+    public void setManagePayment(String managePayment) {
+        this.managePayment = managePayment;
+    }
 
     @Override
     public String toString() {
