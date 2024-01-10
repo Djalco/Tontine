@@ -117,5 +117,21 @@ public class UserDao extends Dao<User> {
 		}
 		return (ArrayList<User>) array;
 	}
+	
+	public boolean userIsValidContribution(String id) throws SQLException {
+		String sql = "SELECT * FROM  `session` "
+				+ "WHERE `id` NOT IN "
+				+ "	(SELECT `session_contributed` FROM `contribution` c  "
+				+ "     WHERE `user` = ?) "
+				+ "ORDER BY date_session ASC "
+				+ "LIMIT 1;";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+//			return ;
+		}
+		return false;
+	}
 
 }

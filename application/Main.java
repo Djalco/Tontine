@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import dao.DaoFactory;
 import dao.SessionDao;
 import dao.SettingDao;
+import exception.EntityNotFoundException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Loan;
@@ -23,7 +24,7 @@ public class Main extends Application {
 //			DatabaseInitializer.destroy();
 			DatabaseInitializer.init();
 
-			initClass();
+//			initClass();
 			if(! SettingDao.settingIsExist()) {
 				Parent root = FXMLLoader.load(getClass().getResource("/view/initTontine.fxml"));
 				Scene scene = new Scene(root);
@@ -35,13 +36,15 @@ public class Main extends Application {
 			Scene scene = new Scene(root,1200,800);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			initClass();
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void initClass() throws SQLException {
+	private void initClass() throws SQLException, EntityNotFoundException {
 		Sanction.intiSanctions();
 		Loan.setSetting(PaymentType.getPayment(SettingDao.getTypePamentLoan()),
 				SettingDao.getAmountPamentLoan());

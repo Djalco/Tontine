@@ -55,7 +55,7 @@ CREATE TABLE `sanction`(
 	`user` VARCHAR(20) NOT NULL,
 	`session_start` VARCHAR(20) NOT NULL,
 	`session_sold` VARCHAR(20) DEFAULT NULL,
-	FOREIGN KEY (`user`) REFERENCES `session`(`id`),
+	FOREIGN KEY (`user`) REFERENCES `user`(`id`),
 	FOREIGN KEY (`session_start`) REFERENCES `session`(`id`),
 	FOREIGN KEY (`session_sold`) REFERENCES `session`(`id`)
 );
@@ -92,4 +92,5 @@ INSERT INTO `user` (`id`, `login`, `firstname`, `lastname`, `password`, `mail`, 
   
  INSERT INTO `setting` (`number_session`, `fequency`, `type_date`, `amount_tontine`, `type_payment_loan`, `amount_payment_loan`, `type_payment_infraction`, `amount_payment_infraction`, `amount_cotisation`, `start_date`) VALUES 
   ('18', '0', '0', '0', '0', '10', '0', '0', '0', '2024-01-11'); 
-
+  
+ 

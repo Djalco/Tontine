@@ -37,5 +37,9 @@ public abstract class DaoFactory {
 	public static SettingDao getSettingDao() throws SQLException{
 		return new SettingDao();
 	}
+	
+	public static SanctionDao getSanctionDao() throws SQLException{
+		return new SanctionDao();
+	}
 
 }

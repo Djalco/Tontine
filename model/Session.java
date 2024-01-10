@@ -57,6 +57,10 @@ public class Session extends AbstractEntity{
 	public static Session getActiveSession() throws SQLException {
 		return DaoFactory.getSessionDao().getActiveSession();
 	}
+	
+	public static Session getPreviousSession() throws SQLException {
+		return DaoFactory.getSessionDao().getPreviousSession();
+	}
 	public int getCotisation() throws SQLException {
 		return DaoFactory.getSessionDao().getCotisation(id);
 	}
@@ -68,8 +72,8 @@ public class Session extends AbstractEntity{
 		return DaoFactory.getSessionDao().getLoan(id,numSession);
 	}
 	
-	private List<Cotisation> getCotisations() throws SQLException {
-		return DaoFactory.getCotisationDao().findBySession(id);
+	private List<Contribution> getCotisations() throws SQLException {
+		return DaoFactory.getContributionDao().findBySession(id);
 	}
 
 	@Override

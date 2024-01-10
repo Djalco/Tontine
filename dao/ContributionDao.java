@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import exception.EntityNotFoundException;
 import model.Contribution;
@@ -35,6 +36,12 @@ public class ContributionDao extends Dao<Contribution> {
 
 	
 	public Contribution find(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Contribution> findBySession(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

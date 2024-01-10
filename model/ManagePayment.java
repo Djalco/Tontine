@@ -36,10 +36,6 @@ public abstract class ManagePayment extends AbstractEntity{
 		this.session = "";
 	}
 
-	public Cotisation getCotisation() throws SQLException {
-		return DaoFactory.getCotisationDao().find(user);
-	}
-
 	public Session getSession() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(session);
 	}

@@ -154,6 +154,15 @@ public class SessionDao extends Dao<Session> {
 		return null;
 	}
 
+	public Session getPreviousSession() throws SQLException {
+		String sql = "SELECT * FROM `session` WHERE date_session < CURRENT_DATE ORDER BY date_session DESC LIMIT 1";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) 
+			return new Session(rs.getString("id"),rs.getInt("num_session"),rs.getDate("date_session").toLocalDate());
+		return null;
+	}
+
 	public List<Session> getAllAfterActiveSess() throws SQLException {
 		List<Session> sessions = new ArrayList<Session>();
 		String sql = "SELECT * FROM `session` WHERE `id` > ? ";

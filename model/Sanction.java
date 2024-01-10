@@ -21,6 +21,7 @@ public class Sanction extends AbstractEntity{
 	public Sanction(String id, int infractionPayment, String user,
 			String sessionStart, String sessionSold) {
 		super(id);
+		this.user = user;
 		this.infractionPayment = InfractionPayment.getInfractionPayment(infractionPayment);
 		this.sessionStart = sessionStart;
 		this.sessionSold = sessionSold;
@@ -67,17 +68,8 @@ public class Sanction extends AbstractEntity{
 		
 	}
 	
-	public static void intiSanctions() {
-		DefinesSanctionContribution();
-		DefinesSanctionLoan();
-	}
-
-	private static void DefinesSanctionLoan() {
-		
-	}
-
-	private static void DefinesSanctionContribution() {
-		
+	public static void intiSanctions() throws SQLException, EntityNotFoundException {
+		DaoFactory.getSanctionDao().initSanction();
 	}
 
 }

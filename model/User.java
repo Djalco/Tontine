@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
+import javafx.scene.text.Text;
 import model.enumration.Role;
+import model.enumration.Status;
 
 public class User extends AbstractEntity{
 	private static User userConnected;
@@ -187,6 +189,15 @@ public class User extends AbstractEntity{
 		return lastname + " " + firstname;
 	}
 
-
+public Text getStatusontisation() {
+	Text t = new Text(DaoFactory.getLoanDao().find(id).status.getName());
+	if(status == Status.PENDING)
+		t.getStyleClass().add("status-pending");
+	else if (status == Status.VALID)
+		t.getStyleClass().add("status-good");
+	else
+		t.getStyleClass().add("status-not-good");
+	return t;
+}
 
 }
