@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="327.0" prefWidth="504.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.ConnexionController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="504.0">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="89.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/logo.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Text fill="#0a00ff" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-bold" text="Nebs">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="19.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-muted" text="Tontine">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="19.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="258.0" prefWidth="237.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label contentDisplay="CENTER" text="Créer et Gérer Facilement Votre Assocition">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="25.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="201.0" text="Controle Facile De Votre Association">
+                     <VBox.margin>
+                        <Insets bottom="57.0" top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" text="Design by 23" textFill="#948f8f">
+                     <VBox.margin>
+                        <Insets bottom="57.0" top="50.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets right="50.0" />
+                     </padding>
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+      <Pane layoutX="237.0" prefHeight="400.0" prefWidth="267.0" style="-fx-background-color: #1565C0;" />
+      <JFXButton fx:id="connect" contentDisplay="CENTER" layoutX="326.0" layoutY="220.0" onAction="#connection" prefHeight="25.0" prefWidth="95.0" text="Connexion">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="login" layoutX="317.0" layoutY="97.0" />
+      <JFXPasswordField fx:id="pass" layoutX="317.0" layoutY="158.0" />
+   </children>
+</AnchorPane>

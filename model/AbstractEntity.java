@@ -34,7 +34,8 @@ public abstract class AbstractEntity {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
+        public abstract void setEntity(AbstractEntity t);
+        
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

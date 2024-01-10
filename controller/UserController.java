@@ -132,7 +132,9 @@ public class UserController extends EntityControllerAbstract<User>{
 		
 		
 	}
+        
 
+        
 	@Override
 	protected void buildEntity() throws Exception {
 		if(entity == null)
