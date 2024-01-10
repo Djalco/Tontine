@@ -14,12 +14,15 @@ public class UserOverviewController extends OverviewControllerAbstract{
 
 	@Override
 	public Button getBackBtn() {
-		return backBtn;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Button getReturnBtn() {
-		return returnBtn;
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 
 }

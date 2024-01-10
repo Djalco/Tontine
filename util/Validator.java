@@ -62,7 +62,8 @@ public class Validator {
 	public static enum RegexType{
 		LOGIN("^[a-z][a-z0-9]{0,}$"), 
 		MAIL("^[a-z-A-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"),
-		PASSWORD("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!@#\\$%\\^&\\*])(?=\\S+$).{0,}$");
+		PASSWORD("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!@#\\$%\\^&\\*])(?=\\S+$).{0,}$"),
+		NUMBER("-?\\d+");
 		String regex;
 		RegexType(String regex) {
 			this.regex = regex;

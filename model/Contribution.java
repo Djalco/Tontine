@@ -9,14 +9,20 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import dao.DaoFactory;
+import exception.EntityNotFoundException;
 import model.enumration.ManagePaymentType;
 
 public class Contribution extends ManagePayment{
 
 	private String sessionContributed;
 	
-	public Contribution(String id, LocalDate createdDate, LocalDate lastModifyDate, int amont, String session, String cotisation, String sessionContributed) {
-		super(id, session, cotisation,ManagePaymentType.CONTRIBUTION.getId());
+	public Contribution(String id, String user) throws SQLException, EntityNotFoundException {
+		super(id,user);
+		this.sessionContributed = DaoFactory.getUserDao().getNextSessionContribute(user).getId();
+	}
+	
+	public Contribution(String id, String user, String session, String sessionContributed) throws SQLException, EntityNotFoundException {
+		super(id, session, user);
 		this.sessionContributed = sessionContributed;
 	}
 
@@ -24,7 +30,7 @@ public class Contribution extends ManagePayment{
 		super();
 	}
 
-	public Session getSessionContributed() throws SQLException {
+	public Session getSessionContributed() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(sessionContributed);
 	}
 
@@ -34,7 +40,12 @@ public class Contribution extends ManagePayment{
 		Contribution c = (Contribution) t;
 		sessionContributed = c.sessionContributed;
 		
+	}
+
+	public void setSessionContributed(String sessionContributed) {
+		this.sessionContributed = sessionContributed;
 	}   
+	
 	
 	
 	

@@ -3,8 +3,12 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import exception.EntityNotFoundException;
+import model.AbstractEntity;
+import model.Session;
 import model.User;
 import model.User.UserBuilder;;
 
@@ -79,6 +83,39 @@ public class UserDao extends Dao<User> {
 					.nbPerson(rs.getInt("nb_person")));
 		}
 		throw new EntityNotFoundException("Utilisateur non trouvé");
+	}
+
+	public Session getNextSessionContribute(String id) throws SQLException, EntityNotFoundException {
+		String sql = "SELECT * FROM  `session` "
+				+ "WHERE `id` NOT IN "
+				+ "	(SELECT `session_contributed` FROM `contribution` c  "
+				+ "     WHERE `user` = ?) "
+				+ "ORDER BY date_session ASC "
+				+ "LIMIT 1;";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			return DaoFactory.getSessionDao().find(rs.getString("id"));
+		}
+		return null;
+	}
+
+
+
+	public ArrayList<User> getAllWithNotLoan(int limit) throws SQLException, EntityNotFoundException{
+		List<User> array = new ArrayList<User>();
+		String sql = "SELECT u.* FROM `user` u  WHERE "
+				+ "u.`id` NOT IN (SELECT `user` "
+				+ "              FROM loan "
+				+ "              WHERE status = 0 )";
+		PreparedStatement pst = con.prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			array.add(find(rs.getString("id")));
+			((AbstractEntity) array.get(array.size()-1)).setRow(array.size());
+		}
+		return (ArrayList<User>) array;
 	}
 
 }

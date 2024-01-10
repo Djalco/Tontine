@@ -2,10 +2,10 @@ package dao;
 
 import java.sql.SQLException;
 
-public class DaoFactory {
+public abstract class DaoFactory {
 
-	public static CotisationDao getCotisationDao() throws SQLException{
-		return new CotisationDao();
+	public static SanctionDao getCotisationDao() throws SQLException{
+		return new SanctionDao();
 	}
 
 
@@ -31,6 +31,11 @@ public class DaoFactory {
 
 	public static ContributionDao getContributionDao() throws SQLException{
 		return new ContributionDao();
+	}
+
+
+	public static SettingDao getSettingDao() throws SQLException{
+		return new SettingDao();
 	}
 
 }

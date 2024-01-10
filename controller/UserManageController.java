@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import controller.generic.ManageControllerAbstract;
@@ -8,6 +9,7 @@ import dao.DaoFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -69,32 +71,8 @@ public class UserManageController extends ManageControllerAbstract<User>{
 		columnPhone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
 		columnRole.setCellValueFactory(new PropertyValueFactory<User, Role>("role"));
 
-//		columnContribute.setCellValueFactory(new PropertyValueFactory<User, Integer>("row"));
-//		columnLoan.setCellValueFactory(new PropertyValueFactory<User, String>("matricule"));
-		
-//		columnStatut.setCellValueFactory(new PropertyValueFactory<Employee, Boolean>("payed"));
-		/*columnStatut.setCellFactory(new Callback<TableColumn<Employee, Boolean>,TableCell<Employee, Boolean>> (){
-
-			@Override
-			public TableCell<Employee, Boolean> call(TableColumn<Employee, Boolean> arg0) {
-				return new TableCell<Employee,Boolean>(){
-					@Override
-					protected void updateItem(Boolean item, boolean empty) {
-						super.updateItem(item, empty);
-						if(item!=null) {
-							if(!item) {
-								setText("Non payé");
-								setTextFill(Color.RED);
-							}else {
-								setText("Payé");
-								setTextFill(Color.GREEN);
-							}
-						}
-					}
-				};
-			}
-		});*/
 	}
+
 
 }
 	

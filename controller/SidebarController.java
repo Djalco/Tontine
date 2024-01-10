@@ -51,6 +51,8 @@ public class SidebarController {
     @FXML
     private Button tontine;
     
+    @FXML
+    private Button sessionContribute;
 
 
     
@@ -126,6 +128,10 @@ public class SidebarController {
     
     public Button tontine() {
     	return tontine;
+    }
+    
+    public Button getSessionContribute() {
+    	return sessionContribute;
     }
 
 }

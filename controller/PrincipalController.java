@@ -6,12 +6,14 @@ import java.util.ResourceBundle;
 
 import controller.enumeration.State;
 import controller.generic.*;
+import dao.SettingDao;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,8 +25,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Loan;
+import model.Session;
 import model.User;
 
+
+import javafx.stage.Modality;
+import static javafx.stage.Modality.NONE;
+import static javafx.stage.Modality.WINDOW_MODAL;
+import static javafx.stage.Modality.APPLICATION_MODAL;
 public class PrincipalController implements Initializable{
 
 	private Parent sidebar;
@@ -41,36 +50,31 @@ public class PrincipalController implements Initializable{
 	private VBox memberManage;
 	private VBox member;
 	private VBox memberMore;
-	private VBox memberOverview;
 
 	private ManageControllerAbstract<User> memberManageControl;
 	private EntityControllerAbstract<User> memberControl;
-	private MoreControllerAbstract memberMoreControl;
-	private OverviewControllerAbstract memberOverviewControl;
+	private MoreControllerAbstract<User> memberMoreControl;
 
 
 	/*All pane for manage loan*/
 	private VBox loanManage;
-	private VBox loanAdd;
-	private VBox loanOverview;
+	private VBox loan;
+	
+	
+	private ManageControllerAbstract<Loan> loanManageControl;
+	private EntityControllerAbstract<Loan> loanControl;
 
 
 	/*All pane for manage sanction*/
 	private VBox sanctionManage;
-	private VBox sanctionOverview;
 
 
 	/*All pane for manage session*/
 	private VBox sessionManage;
-	private VBox sessionAdd;
-	private VBox sessionOverview;
+	private VBox sessionMore;
 
-
-	/*All pane for manage role*/
-	private VBox roleManage;
-	private VBox roleAssign;
-	private VBox roleOverview;
-
+	private ManageControllerAbstract<Session> sessionManageControl;
+	private MoreControllerAbstract<Session> sessionMoreControl;
 
 	/*All pane for manage log*/
 	private VBox log;
@@ -101,7 +105,7 @@ public class PrincipalController implements Initializable{
 	public void backPane(VBox child, ManageControllerAbstract<?> manageController, State state, String message) {
 		main.getChildren().clear();
 		navigationControl.setManageType(state.getName());
-//		manageController
+		//		manageController
 		main.getChildren().addAll(navigation,child);
 		VBox.setVgrow(child, Priority.ALWAYS);
 		createAndShowPopUp(message);
@@ -115,6 +119,13 @@ public class PrincipalController implements Initializable{
 		main.getChildren().addAll(navigation,child);
 	}
 
+	public <T> void switchPane(VBox child, MoreControllerAbstract<T> control, State state, T entity) throws Exception {
+		main.getChildren().clear();
+		navigationControl.setManageType(state.getName());
+		control.setEntity(entity);
+		main.getChildren().addAll(navigation,child);
+	}
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -123,15 +134,111 @@ public class PrincipalController implements Initializable{
 			setSidebar();
 			setDashboard();
 			setMember();
+			setSession();
+			setLoan();
 
 
-			switchPane(memberManage, "Utilisateur",State.GESTION);
+			switchPane(memberManage, "Membre",State.GESTION);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		principal.setLeft(sidebar);
+
+
+		try {
+			if(! SettingDao.settingIsExist()) {
+				Parent root = FXMLLoader.load(getClass().getResource("/view/initTontine.fxml"));
+				Stage stage = new Stage();
+				stage.initOwner(((Stage)sidebar.getScene().getWindow()));
+				stage.initModality(APPLICATION_MODAL);
+				
+				Scene scene = new Scene(root, 200, 100);
+				stage.setScene(scene);
+				stage.setTitle("A Dialog Box");
+				stage.show();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+	private void setLoan() throws IOException {
+		FXMLLoader load1 = new FXMLLoader();
+		load1.setLocation(getClass().getResource("/view/loan_manage.fxml"));
+		loanManage = load1.load();
+		loanManageControl = load1.getController();
+		sidebarControl.loanManage().setOnAction(e->{
+			switchPane(loanManage, "Loan", State.GESTION);
+		});
+		
+		FXMLLoader load2 = new FXMLLoader();
+		load2.setLocation(getClass().getResource("/view/loan.fxml"));
+		loan = load2.load();
+
+		loanControl = load2.getController();
+		loanControl.setController(this,loanManageControl);
+		loanControl.setPage(loanManage);
+		loanManageControl.setPage(loan);
+		loanManageControl.setController(this, loanControl);
+
+		sidebarControl.memberAdd().setOnAction(e->{
+			try {
+				memberControl.setState(State.ADD);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			navigationControl.setEntity("Prêt");
+			navigationControl.setManageType(State.ADD.getName());
+			switchPane(loan, "Prêt", State.ADD);
+		});
+
+		loanControl.getBackBtn().setOnAction(e->{
+			switchPane(loanManage, "Prêt", State.GESTION);
+		});
+
+		loanControl.getCancelBtn().setOnAction(e->{
+			switchPane(loanManage, "Prêt", State.GESTION);
+		});
+
+//		loanControl.getMoreBtn().setOnAction(e->{
+//			switchPane(memberMore, "Prêt", State.GESTION);
+//		});
+//		loanManageControl.getAdd().setOnAction(e->{
+//			try {
+//				memberControl.setState(State.ADD);
+//			} catch (Exception e1) {
+//				e1.printStackTrace();
+//			}
+//			switchPane(member,"Prêt",State.ADD);
+//		});
+	
+	}
+
+
+	private void setSession() throws IOException {
+		FXMLLoader load1 = new FXMLLoader();
+		load1.setLocation(getClass().getResource("/view/session_manage.fxml"));
+		sessionManage = load1.load();
+		sessionManageControl = load1.getController();
+		sidebarControl.sessionManage().setOnAction(e->{
+			switchPane(sessionManage, "Session", State.GESTION);
+		});
+		sessionManageControl.setController(this,null);
+
+
+		FXMLLoader load3 = new FXMLLoader();
+		load3.setLocation(getClass().getResource("/view/session_more.fxml"));
+		sessionMore = load3.load();
+		sessionMoreControl = load3.getController();
+		sessionManageControl.setController(sessionMoreControl);
+		sessionManageControl.setPage(sessionMore);
+		
+		sessionMoreControl.getBackBtn().setOnAction(e->{
+			switchPane(sessionManage, "Session", State.GESTION);
+		});
+	}
+
+
 	private void setNavigation() throws IOException {
 		FXMLLoader load = new FXMLLoader();
 		load.setLocation(getClass().getResource("/view/navigation.fxml"));
@@ -180,13 +287,13 @@ public class PrincipalController implements Initializable{
 		FXMLLoader load2 = new FXMLLoader();
 		load2.setLocation(getClass().getResource("/view/user.fxml"));
 		member = load2.load();
-		
+
 		memberControl = load2.getController();
 		memberControl.setController(this,memberManageControl);
 		memberControl.setPage(memberManage);
 		memberManageControl.setPage(member);
 		memberManageControl.setController(this, memberControl);
-		
+
 		sidebarControl.memberAdd().setOnAction(e->{
 			try {
 				memberControl.setState(State.ADD);
@@ -216,30 +323,30 @@ public class PrincipalController implements Initializable{
 		memberMore = load3.load();
 		memberMoreControl = load3.getController();
 
-		memberMoreControl.getBackBtn().setOnAction(e->{
-			switchPane(memberManage, "Utilisateur", State.GESTION);
-		});
+//		memberMoreControl.getBackBtn().setOnAction(e->{
+//			switchPane(memberManage, "Utilisateur", State.GESTION);
+//		});
+//
+//		memberMoreControl.getReturnBtn().setOnAction(e->{
+//			switchPane(memberManage, "Utilisateur", State.GESTION);
+//		});
 
-		memberMoreControl.getReturnBtn().setOnAction(e->{
-			switchPane(memberManage, "Utilisateur", State.GESTION);
-		});
 
-
-		FXMLLoader load4 = new FXMLLoader();
-		load4.setLocation(getClass().getResource("/view/user_overview.fxml"));
-		memberOverview = load4.load();
-		memberOverviewControl = load4.getController();
-		sidebarControl.memberOverview().setOnAction(e->{
-			switchPane(memberOverview, "Utilisateur", State.OVERVIEW);
-		});
-
-		memberOverviewControl.getBackBtn().setOnAction(e->{
-			switchPane(memberManage, "Utilisateur", State.GESTION);
-		});
-
-		memberOverviewControl.getReturnBtn().setOnAction(e->{
-			switchPane(memberManage, "Utilisateur", State.GESTION);
-		});
+//		FXMLLoader load4 = new FXMLLoader();
+//		load4.setLocation(getClass().getResource("/view/user_overview.fxml"));
+//		memberOverview = load4.load();
+//		memberOverviewControl = load4.getController();
+//		sidebarControl.memberOverview().setOnAction(e->{
+//			switchPane(memberOverview, "Utilisateur", State.OVERVIEW);
+//		});
+//
+//		memberOverviewControl.getBackBtn().setOnAction(e->{
+//			switchPane(memberManage, "Utilisateur", State.GESTION);
+//		});
+//
+//		memberOverviewControl.getReturnBtn().setOnAction(e->{
+//			switchPane(memberManage, "Utilisateur", State.GESTION);
+//		});
 
 	}
 

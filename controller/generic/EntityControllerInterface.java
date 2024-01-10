@@ -1,20 +1,29 @@
 package controller.generic;
 
+import controller.PrincipalController;
+import controller.enumeration.State;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
-public interface EntityControllerInterface {
+public interface EntityControllerInterface <T>{
 
-	public Button getBackBtn();
-	
-	public Button getMainBtn();
-	
-	public Button getCancelBtn();
-	
-	public Button getMoreBtn();
-	
-	public boolean verifyTextfield();
-	
-	public boolean verifySpinner();
-	
-	public boolean verifyComboBox();
+	Button getBackBtn();
+
+	Button getMainBtn();
+
+	Button getCancelBtn();
+
+	Button getMoreBtn();
+
+	void setState(State state) throws Exception;
+
+	void closeUpdate();
+
+	void setPage(VBox page);
+
+	void setController(PrincipalController principal, ManageControllerAbstract<T> manageController);
+
+	void removeError();
+
+
 }

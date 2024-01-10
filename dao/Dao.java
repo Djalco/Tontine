@@ -49,7 +49,7 @@ public abstract class Dao <T>{
 		List<T> array = new ArrayList<T>();
 		String sql = "SELECT `id` FROM " + table + " WHERE `is_actif` = 1 LIMIT ?;";
 		PreparedStatement pst = con.prepareStatement(sql);
-		pst.setInt(1, limit);
+		pst.setInt(1, 10000);
 		ResultSet rs = pst.executeQuery();
 		while(rs.next()) {
 				array.add(find(rs.getString("id")));
@@ -58,18 +58,18 @@ public abstract class Dao <T>{
 		return (ArrayList<T>) array;
 	}
 	
-	private int getSize() throws SQLException {
+	public int getSize() throws SQLException {
 		String sql = "SELECT count(*) as nb FROM "+table+";";
 		PreparedStatement pst = con.prepareStatement(sql);
 		ResultSet rs = pst.executeQuery();
 		if(rs.next())
-			return rs.getInt("nb") + 1;
+			return rs.getInt("nb");
 		return 0;
 	}
 	public String generateId() throws SQLException {
 		String id = idS+"-";
 		id+= String.valueOf(LocalDate.now().getYear()).substring(1, 4) + "-";
-		id+= String.format("%03d", getSize());
+		id+= String.format("%03d", getSize()+1);
 		return id;
 	}
 	

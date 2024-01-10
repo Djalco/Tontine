@@ -182,6 +182,11 @@ public class User extends AbstractEntity{
 		nbPerson = u.nbPerson;
 	}
 
+	@Override
+	public String toString() {
+		return lastname + " " + firstname;
+	}
+
 
 
 }

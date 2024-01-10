@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
+import exception.EntityNotFoundException;
 import model.enumration.ManagePaymentType;
 
 public abstract class ManagePayment extends AbstractEntity{
@@ -15,13 +16,20 @@ public abstract class ManagePayment extends AbstractEntity{
     protected ManagePaymentType managePaymentType;
     
     public ManagePayment(String id,
-			String session, String user, int managePaymentType) {
+			String session, String user) {
 		super(id);
 		this.session = session;
 		this.user = user;
-		this.managePaymentType = ManagePaymentType.getManagePaymentType(managePaymentType);
 		if(!sessions.contains(this)) sessions.add(this);
-	}
+	} 
+    
+    public ManagePayment(String id, String user) throws SQLException {
+		super(id);
+		this.session = Session.getActiveSession().getId();
+		this.user = user;
+		if(!sessions.contains(this)) sessions.add(this);
+	} 
+    
     
 	public ManagePayment() {
 		super();
@@ -32,10 +40,23 @@ public abstract class ManagePayment extends AbstractEntity{
 		return DaoFactory.getCotisationDao().find(user);
 	}
 
-	public Session getSession() throws SQLException {
+	public Session getSession() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(session);
 	}
 	
+	
+	public static List<ManagePayment> getSessions() {
+		return sessions;
+	}
+
+	public User getUser() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getUserDao().find(user);
+	}
+
+	public ManagePaymentType getManagePaymentType() {
+		return managePaymentType;
+	}
+
 	public void createEntity(AbstractEntity t) {
 		ManagePayment m = (ManagePayment) t;
 		session = m.session;

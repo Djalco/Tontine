@@ -22,7 +22,7 @@ public class Cotisation extends AbstractEntity{
 		return DaoFactory.getUserDao().find(user);
 	}
 
-	public Session getSession() throws SQLException {
+	public Session getSession() throws SQLException, EntityNotFoundException {
 		return DaoFactory.getSessionDao().find(session);
 	}
 

@@ -172,6 +172,9 @@ Button{
 .titled-pane .title {
     -fx-border-color: null;
 }
+.accordion .titled-pane .title .arrow-button{
+	-fx-background-color: none;
+}
 
 .tableContainer{
 	-fx-background-color: #fff;
@@ -416,6 +419,8 @@ Button{
 	-fx-background-color: black;
 }
 
+
+
 .add-btn{
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
@@ -479,6 +484,36 @@ Button{
 
 .title-detail-number{
 	-fx-fill: -fx-title-bold;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+.title-detail-number-valid{
+	-fx-fill: green;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+.title-detail-number-not-valid{
+	-fx-fill: red;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+.status-good{
+	-fx-fill: green;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+.status-no-good{
+	-fx-fill: red;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+
+.status-pending{
+	-fx-fill: orange;
 	-fx-font-weight: bold;
 	-fx-font-size: 15;
 }

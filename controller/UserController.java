@@ -57,7 +57,6 @@ public class UserController extends EntityControllerAbstract<User>{
 		setTextField(lastname, entity.getLastname());
 		setTextField(firstname, entity.getFirstname());
 		setTextField(phone, entity.getPhone());
-		
 		getComboBox(role).getSelectionModel().select(entity.getRole().getName());
 		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE);
 		valueFactory.setValue(entity.getNbPerson());
@@ -97,12 +96,11 @@ public class UserController extends EntityControllerAbstract<User>{
 		setDisable(noms, disable);
 	}
 	
-	
 
 	@Override
 	protected void initComponent() throws Exception {
 		setValidatorTextField(login, 
-				new Validator("Le login ne doit pas être vide",6,"Le login doit faire au moins 6 caractères",
+				new Validator("Le login ne doit pas être videeeeee",6,"Le login doit faire au moins 6 caractères",
 						RegexType.LOGIN.getRegex(),"Le login ne contient que des lettres minuscules"));
 
 		setValidatorPassword(password, 

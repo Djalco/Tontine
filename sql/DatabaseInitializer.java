@@ -80,7 +80,11 @@ public class DatabaseInitializer {
 				stmt.addBatch(sql);
 			}
 
-			stmt.executeBatch();
+			try {
+				stmt.executeBatch();
+			}catch(Exception e) {
+				System.err.println(e.getMessage());
+			}
 
 			br.close();
 		} catch (Exception e) {

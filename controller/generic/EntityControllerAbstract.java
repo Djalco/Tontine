@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import controller.PrincipalController;
 import controller.enumeration.State;
 import dao.Dao;
+import dao.LoanDao;
 import exception.EntityNotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import util.Validator;
 
-public abstract class EntityControllerAbstract<T> implements Initializable{
+public abstract class EntityControllerAbstract<T> implements Initializable, EntityControllerInterface<T>{
 
 	protected Dao<T> dao;
 
@@ -51,39 +52,24 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 	@FXML
 	protected Button moreBtn;
 
+	@Override
 	public Button getBackBtn() {
 		return backBtn;
 	}
 
+	@Override
 	public Button getMainBtn() {
 		return mainBtn;
 	}
 
+	@Override
 	public Button getCancelBtn() {
 		return cancelBtn;
 	}
 
+	@Override
 	public Button getMoreBtn() {
 		return moreBtn;
-	}
-
-	public boolean verifyTextfield() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean verifySpinner() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean verifyComboBox() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	protected void getInput() {
-
 	}
 
 	protected abstract void setField() throws Exception;
@@ -132,6 +118,7 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 	protected void setDisable(VBox vbox, boolean disable) {
 		vbox.setDisable(disable);
 	}
+
 	public void setEntity(T entity) {
 		this.entity = entity;
 	}
@@ -140,24 +127,27 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 		this.entity = null;
 	}
 
+	@Override
 	public void setState(State state) throws Exception {
 		this.state = state;
 		init();
 	}
 
+	@Override
 	public void closeUpdate() {
 		isUpdate = false;
 	}
 
+	@Override
 	public void setPage(VBox page) {
 		this.page = page;
 	}
 
+	@Override
 	public void setController(PrincipalController principal, ManageControllerAbstract<T> manageController) {
 		this.principal = principal;
 		this.manageController = manageController;
 	}
-
 
 	protected void setValidatorTextField(VBox vbox, Validator validator) throws Exception {
 		TextField field = getTexteField(vbox);
@@ -293,13 +283,17 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 			setField();
 			disableField(false);
 			moreBtn.setVisible(false);
+//			mainBtn.setDisable(true);
 		}
 		if(state == State.DETAIL) {
 			((HBox) cancelBtn.getParent()).getChildren().remove(mainBtn);
 			cancelBtn.setText("Retour");
 			setField();
 			disableField(true);
-			moreBtn.setVisible(true);
+			if(dao instanceof LoanDao)
+			moreBtn.setVisible(false);
+			else
+				moreBtn.setVisible(true);
 		}
 
 	}
@@ -314,6 +308,7 @@ public abstract class EntityControllerAbstract<T> implements Initializable{
 		return valid;
 	}
 
+	@Override
 	public void removeError() {
 		for(Map.Entry<VBox, Validator> entry: validates.entrySet()) {
 			VBox vbox = entry.getKey();

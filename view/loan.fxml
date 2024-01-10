@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefWidth="1200.0" spacing="10.0" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanController">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-bold" text="Pret" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="backBtn" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <VBox spacing="25.0" style="-fx-background-color: #fff;">
+         <children>
+            <VBox spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="Pret" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Separator orientation="VERTICAL" />
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Membre" />
+                              <Separator prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Session de Prets" />
+                              <Separator prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Session de remise" />
+                              <Separator prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Pret" />
+                              <Separator prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Interet" />
+                              <Separator prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Infraction" />
+                              <Separator prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Statut" />
+                              <Separator prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" />
+                        <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text fx:id="member" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="Jean Roger" />
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="sessionLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="sessionRemboursed" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="amountLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="22.500 CFA" />
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="amountInterest" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="22.500 CFA" />
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="amountInfraction" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="22.500 CFA" />
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number-valid" text="Rembourser" />
+                              <Separator prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER" maxWidth="800.0" spacing="25.0">
+         <children>
+            <Button fx:id="mainBtn" mnemonicParsing="false" styleClass="add-btn" text="Ajouter" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" styleClass="cancel-btn" text="Annuler" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="moreBtn" mnemonicParsing="false" styleClass="add-btn">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../img/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <styleClass>
+      <String fx:value="tableContainer" />
+      <String fx:value="drop-shadow" />
+   </styleClass>
+</VBox>

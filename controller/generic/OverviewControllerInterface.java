@@ -2,7 +2,7 @@ package controller.generic;
 
 import javafx.scene.control.Button;
 
-public interface OverviewControllerInterface {
+public interface OverviewControllerInterface<T>{
 	
 	public Button getBackBtn();
 	

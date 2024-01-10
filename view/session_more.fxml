@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<VBox stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SessionMoreController">
+   <children>
+      <VBox prefWidth="1200.0" spacing="10.0" stylesheets="@../css/light.css">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-bold" text="Session" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Button fx:id="backBtn" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox style="-fx-background-color: white;" />
+         </children>
+      </VBox>
+      <TabPane minHeight="500.0" styleClass="tableContainer" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1000.0" tabMaxWidth="1000.0">
+         <tabs>
+            <Tab text="Detail">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #fff;">
+                     <content>
+                        <VBox spacing="25.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="Contributions" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombre de Personnes ayant Contribuées" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombre de Personnes restantes" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Statut" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="nbPersonContribute" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="nbPersonContributeRemaining" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="statusContribute" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number-valid" text="Valide" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="Prets" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombre de Personne ayant Fait un prets" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombre de Personne ayant remboursées Prets" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombre de Personne Restants" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Statut" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="nbPersonLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="nbPersonLoanRemboursed" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="20" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="nbPersonLRemainig" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="statutLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number-not-valid" text="Invalide" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="Infractions" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombres Retard Contribution" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nombre Retard Prets" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="infractionContribution" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="infractionLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Contributions">
+               <content>
+                  <VBox>
+                     <children>
+                        <TableView fx:id="contribution" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="tableContributeMember" prefWidth="75.0" text="Membre" />
+                              <TableColumn fx:id="tableContributesNbName" prefWidth="75.0" text="Nbre de noms" />
+                              <TableColumn fx:id="tableContributeStatus" prefWidth="75.0" text="Statut" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Prets">
+               <content>
+                  <VBox>
+                     <children>
+                        <TableView VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="tableLoanMember" prefWidth="75.0" text="Membre" />
+                              <TableColumn fx:id="tableLoanAmount" prefWidth="75.0" text="Montant" />
+                              <TableColumn fx:id="tableLoanRemaining" prefWidth="75.0" text="Seance de remise" />
+                              <TableColumn fx:id="tableLoanStatus" prefWidth="75.0" text="Statut" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Infractions">
+               <content>
+                  <VBox>
+                     <children>
+                        <TableView VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="tablenfractionMember" prefWidth="75.0" text="Membre" />
+                              <TableColumn fx:id="tableInfractionType" prefWidth="75.0" text="Type" />
+                              <TableColumn fx:id="tableInfractionAmount" prefWidth="75.0" text="Montant" />
+                              <TableColumn fx:id="tableInfractionStatus" prefWidth="75.0" text="Statut" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Vue D'ensemble">
+               <content>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <VBox spacing="10.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="#10e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form-sub" text="3 Octobre" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="40.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 12" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 11" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 10" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Nbre nom cotise  =&gt;  02" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Pret (110.00Fr) =&gt; 13e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="#10e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form-sub" text="3 Octobre" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="40.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 12" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 11" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 10" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Nbre nom cotise  =&gt;  02" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Pret (110.00Fr) =&gt; 13e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="#10e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form-sub" text="3 Octobre" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="40.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 12" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 11" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 10" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Nbre nom cotise  =&gt;  02" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Pret (110.00Fr) =&gt; 13e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="#10e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form-sub" text="3 Octobre" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="40.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 12" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 11" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 10" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Nbre nom cotise  =&gt;  02" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Pret (110.00Fr) =&gt; 13e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="#10e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form-sub" text="3 Octobre" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="40.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 12" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 11" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 10" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Nbre nom cotise  =&gt;  02" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Pret (110.00Fr) =&gt; 13e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="#10e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form-sub" text="3 Octobre" />
+                                                   </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="40.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 12" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 11" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Cotisation pour seance 10" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Nbre nom cotise  =&gt;  02" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road" text="Pret (110.00Fr) =&gt; 13e Seance" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-road-sub" text="6h:30" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER" spacing="40.0">
+                                       <children>
+                                          <Circle fill="#aeaeae" radius="6.0" stroke="#bcbcbc" strokeType="INSIDE" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+   <styleClass>
+      <String fx:value="tableContainer" />
+      <String fx:value="drop-shadow" />
+   </styleClass>
+</VBox>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SessionMoreController">
+   <children>
+      <VBox prefWidth="1200.0" spacing="10.0" stylesheets="@../css/light.css">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-bold" text="Pret" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Button fx:id="backBtn" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox style="-fx-background-color: white;" />
+         </children>
+      </VBox>
+      <TabPane minHeight="500.0" styleClass="tableContainer" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1000.0" tabMaxWidth="1000.0">
+         <tabs>
+            <Tab text="Detail">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #fff;">
+                     <content>
+                        <VBox spacing="25.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-form" text="Pret" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Membre" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Session de Prets" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Session de remise" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Interet" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Statut" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                          <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="nbPersonContribute1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="Jean Roger" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="nbPersonContribute" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="nbPersonContributeRemaining" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="nbPersonContributeRemaining1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="22.500 CFA" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="statusContribute" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number-valid" text="Rembourser" />
+                                                <Separator prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+   <styleClass>
+      <String fx:value="tableContainer" />
+      <String fx:value="drop-shadow" />
+   </styleClass>
+</VBox>
