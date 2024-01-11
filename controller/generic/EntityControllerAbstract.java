@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.User;
 import util.Validator;
 
 public abstract class EntityControllerAbstract<T> implements Initializable, EntityControllerInterface<T>{
@@ -355,6 +356,10 @@ public abstract class EntityControllerAbstract<T> implements Initializable, Enti
 			e.printStackTrace();
 		}
 
+	}
+
+	public T getEntity() {
+		return entity;
 	}
 
 }

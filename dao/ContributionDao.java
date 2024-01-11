@@ -1,11 +1,15 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import exception.EntityNotFoundException;
+import model.AbstractEntity;
 import model.Contribution;
+import model.Loan;
 
 public class ContributionDao extends Dao<Contribution> {
 
@@ -44,6 +48,20 @@ public class ContributionDao extends Dao<Contribution> {
 	public List<Contribution> findBySession(String id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public List<Contribution> findByUser(String id) throws SQLException {
+		List<Contribution> array = new ArrayList<Contribution>();
+		String sql = "SELECT `id` FROM " + table + " WHERE `user` = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setString(1, id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+				array.add(find(rs.getString("id")));
+//				 array.get(array.size()-1).setRow(array.size());
+		}
+		return (ArrayList<Contribution>) array;
 	}
 
 	

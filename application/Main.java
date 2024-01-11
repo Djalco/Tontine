@@ -8,6 +8,7 @@ import dao.SettingDao;
 import exception.EntityNotFoundException;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.Contribution;
 import model.Loan;
 import model.Sanction;
 import model.enumration.PaymentType;
@@ -32,8 +33,8 @@ public class Main extends Application {
 				primaryStage.show();
 			}else {
 				DaoFactory.getSessionDao().init();
-			Parent root = FXMLLoader.load(getClass().getResource("/view/principal.fxml"));
-			Scene scene = new Scene(root,1200,800);
+			Parent root = FXMLLoader.load(getClass().getResource("/view/Connexion.fxml"));
+			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
@@ -48,6 +49,7 @@ public class Main extends Application {
 		Sanction.intiSanctions();
 		Loan.setSetting(PaymentType.getPayment(SettingDao.getTypePamentLoan()),
 				SettingDao.getAmountPamentLoan());
+		Contribution.setSetting(SettingDao.getAmountContribute());
 	}
 
 	public static void main(String[] args) {

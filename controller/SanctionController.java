@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import model.Loan;
 
-public class LoanController extends EntityControllerAbstract<Loan>{
+public class SanctionController extends EntityControllerAbstract<Loan>{
 
     @FXML
     private Text amountInfraction;
@@ -47,8 +47,6 @@ public class LoanController extends EntityControllerAbstract<Loan>{
 		amountInterest.setText(entity.getInterest()+"");
 		member.setText(entity.getUser().toString());
 		member.setText(entity.getUser().toString());
-		status.setText(entity.getStatusColor().getText());
-		status.getStyleClass().addAll(entity.getStatusColor().getStyleClass());
 	}
 
 	@Override

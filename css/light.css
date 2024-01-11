@@ -506,7 +506,7 @@ Button{
 	-fx-font-size: 15;
 }
 
-.status-no-good{
+.status-not-good{
 	-fx-fill: red;
 	-fx-font-weight: bold;
 	-fx-font-size: 15;

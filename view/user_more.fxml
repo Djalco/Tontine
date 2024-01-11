@@ -60,32 +60,20 @@
                                                 <Separator prefWidth="200.0" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre Infractions:" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre de seances" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre de seances cotisee" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Infraction Seances" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre infraction seance" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Infraction" />
                                                 <Separator prefWidth="200.0" />
                                              </children>
                                           </VBox>
                                           <Separator orientation="VERTICAL" />
                                           <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="30 750 Fr" />
+                                                <Text fx:id="amountSold" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="30 750 Fr" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="30 750 Fr" />
+                                                <Text fx:id="amountRemainnig" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="30 750 Fr" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
+                                                <Text fx:id="nbInfractions" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="15" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="15" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2250" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2" />
+                                                <Text fx:id="amountInfraction" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2250" />
                                                 <Separator prefWidth="200.0" />
                                              </children>
                                           </VBox>
@@ -112,24 +100,16 @@
                                                 <Separator prefWidth="200.0" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre de seances cotisee" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant Infraction Seances" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre infraction seance" />
-                                                <Separator prefWidth="200.0" />
                                              </children>
                                           </VBox>
                                           <Separator orientation="VERTICAL" />
                                           <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3e" />
+                                                <Text fx:id="gainPos" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3e" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
+                                                <Text fx:id="nbSeance" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="17" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="15" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2250" />
-                                                <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2" />
+                                                <Text fx:id="nbSeanceContributed" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="15" />
                                                 <Separator prefWidth="200.0" />
                                              </children>
                                           </VBox>
@@ -160,20 +140,24 @@
                                                 <Separator prefWidth="200.0" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Nbre infraction pret" />
                                                 <Separator prefWidth="200.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail" text="Montant infraction pret" />
+                                                <Separator prefWidth="200.0" />
                                              </children>
                                           </VBox>
                                           <Separator orientation="VERTICAL" />
                                           <VBox alignment="TOP_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="4" />
+                                                <Text fx:id="NbrenbLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="4" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
+                                                <Text fx:id="nbValidLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="3" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="15" />
+                                                <Text fx:id="amountLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="15" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2" />
+                                                <Text fx:id="amountInterest" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2" />
                                                 <Separator prefWidth="200.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2250" />
+                                                <Text fx:id="nbInfractionLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2250" />
+                                                <Separator prefWidth="200.0" />
+                                                <Text fx:id="amountInfractionLoan" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-detail-number" text="2250" />
                                                 <Separator prefWidth="200.0" />
                                              </children>
                                           </VBox>
@@ -195,11 +179,9 @@
                <content>
                   <VBox>
                      <children>
-                        <TableView VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tableContribution" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="#" />
                               <TableColumn prefWidth="75.0" text="Seance" />
-                              <TableColumn prefWidth="75.0" text="Statut" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -213,9 +195,8 @@
                <content>
                   <VBox>
                      <children>
-                        <TableView VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tableLoan" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="#" />
                               <TableColumn prefWidth="75.0" text="Séance" />
                               <TableColumn prefWidth="75.0" text="Montant" />
                               <TableColumn prefWidth="75.0" text="Seance de remise" />
@@ -233,9 +214,8 @@
                <content>
                   <VBox>
                      <children>
-                        <TableView VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tableInfraction" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="#" />
                               <TableColumn prefWidth="75.0" text="Seance" />
                               <TableColumn prefWidth="75.0" text="Type" />
                               <TableColumn prefWidth="75.0" text="Montant" />
@@ -253,7 +233,7 @@
                <content>
                   <ScrollPane fitToWidth="true">
                      <content>
-                        <VBox spacing="10.0" style="-fx-background-color: #fff;">
+                        <VBox fx:id="overview" spacing="10.0" style="-fx-background-color: #fff;">
                            <children>
                               <VBox spacing="10.0">
                                  <children>

@@ -27,10 +27,10 @@ public class SessionManageController extends ManageControllerAbstract<Session>{
 	private TableColumn<Session, String> columnLoan;
 
 	@FXML
-	private TableColumn<Session, String> columnStatisContribute;
+	private TableColumn<Session, Text> columnStatisContribute;
 
 	@FXML
-	private TableColumn<Session, String> columnStatusLoan;
+	private TableColumn<Session, Text> columnStatusLoan;
 
 	@FXML
 	private TableColumn<Session, Integer> columnNum;
@@ -70,6 +70,8 @@ public class SessionManageController extends ManageControllerAbstract<Session>{
 		columnCotisation.setCellValueFactory(new PropertyValueFactory<Session, String>("cotisation"));
 		columnLoan.setCellValueFactory(new PropertyValueFactory<Session, String>("loan"));
 		columnNum.setCellValueFactory(new PropertyValueFactory<Session, Integer>("numSession"));
+		columnStatisContribute.setCellValueFactory(new PropertyValueFactory<Session, Text>("statusColorContribute"));
+		columnStatusLoan.setCellValueFactory(new PropertyValueFactory<Session, Text>("statusColorLoan"));
 	}
 
 

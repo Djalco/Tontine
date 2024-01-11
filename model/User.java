@@ -1,12 +1,13 @@
 package model;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
+import exception.EntityNotFoundException;
 import javafx.scene.text.Text;
+import model.enumration.InfractionPayment;
 import model.enumration.Role;
 import model.enumration.Status;
 
@@ -22,6 +23,17 @@ public class User extends AbstractEntity{
 	private Role role;
 	private int nbPerson;
 
+	static{
+		try {
+			userConnected= DaoFactory.getUserDao().find("usr-023-001");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EntityNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public User(UserBuilder builder) {
 		id = builder.id;
 		login = builder.login;
@@ -89,10 +101,6 @@ public class User extends AbstractEntity{
 	}
 	public void setNbPerson(int nbPerson) {
 		this.nbPerson = nbPerson;
-	}
-
-	private List<ManagePayment> getManagePaymeny() throws SQLException {
-		return DaoFactory.getManagePaymentDao().findByUser(id);
 	}
 
 	public static User getUserConnected() {
@@ -189,15 +197,95 @@ public class User extends AbstractEntity{
 		return lastname + " " + firstname;
 	}
 
-public Text getStatusontisation() {
-	Text t = new Text(DaoFactory.getLoanDao().find(id).status.getName());
-	if(status == Status.PENDING)
-		t.getStyleClass().add("status-pending");
-	else if (status == Status.VALID)
-		t.getStyleClass().add("status-good");
-	else
-		t.getStyleClass().add("status-not-good");
-	return t;
-}
+	public Text getStatusContributiontion() throws SQLException {
+		boolean status = DaoFactory.getUserDao().userIsValidContribution(id);
+		Text t = new Text(status?"Valide":"Invalide");
+		if (status)
+			t.getStyleClass().add("status-good");
+		else
+			t.getStyleClass().add("status-not-good");
+		return t;
+	}
+
+	public Text getStatusLoan() throws SQLException {
+		boolean status = DaoFactory.getUserDao().userIsValidLoan(id);
+		Text t = new Text(status?"Valide":"Invalide");
+		if (status)
+			t.getStyleClass().add("status-good");
+		else
+			t.getStyleClass().add("status-not-good");
+		return t;
+	}
+
+	public List<Loan> getLoan() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getLoanDao().findByUser(id);
+	}
+
+	public int getAmountLoan() throws SQLException, EntityNotFoundException {
+		int amount = 0;
+		for(Loan loan: DaoFactory.getLoanDao().findByUser(id))
+			amount+=loan.getAmount();
+		return amount;
+	}
+
+	public int getAmount() throws SQLException {
+		return DaoFactory.getContributionDao().findByUser(id).size() * Contribution.getAmount();
+	}
+
+	public int getValidLoan() throws SQLException, EntityNotFoundException {
+		int nb = 0;
+		for(Loan loan: DaoFactory.getLoanDao().findByUser(id))
+			nb+=loan.getStatus()==Status.VALID?1:0;
+		return nb;
+	}
+
+	public int getAmountInfraction() throws SQLException, EntityNotFoundException {
+		int amount = 0;
+		System.out.println(DaoFactory.getSanctionDao().findByUser(id).size());
+		for(Sanction s: DaoFactory.getSanctionDao().findByUser(id))
+			amount+=s.getAmount();
+		return amount;
+	}
+
+	public int getAmountInfractionLoan() throws SQLException, EntityNotFoundException {
+		int amount = 0;
+		for(Sanction s: DaoFactory.getSanctionDao().findByUser(id))
+			if(s.getInfractionPayment() == InfractionPayment.LATE_REMBOURSEMENT)
+			amount+=s.getAmount();
+		return amount;
+	}
+
+	public int getAmountInterest() throws SQLException, EntityNotFoundException {
+		int amount = 0;
+		for(Loan s: DaoFactory.getLoanDao().findByUser(id))
+			amount+=s.getInterest();
+		return amount;
+	}
+
+	public int getAmountRemaining() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getSessionDao().getAll(10000).size()*Contribution.getAmount()-getAmount();
+	}
+
+	public int getPos() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getUserDao().getAll(10000).indexOf(this)+1;
+	}
+
+	public List<Sanction> getInfraction() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getSanctionDao().findByUser(id);
+	}
+
+	public int getNbInfractionLoan() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getSanctionDao().findByUser(id)
+				.stream().filter(e-> e.getInfractionPayment() == InfractionPayment.LATE_REMBOURSEMENT)
+				.toList().size();
+	}
+
+	public int getNbSession() throws SQLException, EntityNotFoundException {
+		return DaoFactory.getSessionDao().getAll(10000).size();
+	}
+
+	public int getNbSessionContribute() throws SQLException {
+		return DaoFactory.getContributionDao().findByUser(id).size();
+	}
 
 }

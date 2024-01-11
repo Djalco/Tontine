@@ -270,5 +270,9 @@ public abstract class ManageControllerAbstract<T> implements Initializable{
 
 	}
 
+	public void refresh() {
+		table.refresh();
+	}
+
 
 }

@@ -173,6 +173,11 @@ public class SessionDao extends Dao<Session> {
 			sessions.add(new Session(rs.getString("id"),rs.getInt("num_session"),rs.getDate("date_session").toLocalDate()));
 		return sessions;
 	}
+
+	public int getNotLoan(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 

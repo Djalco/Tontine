@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
+import javafx.scene.text.Text;
+import model.enumration.Status;
 
 public class Session extends AbstractEntity{
 	
@@ -46,12 +48,12 @@ public class Session extends AbstractEntity{
 	
 	
 	
-	public boolean getStatusCotisation() {
-		return true;
+	public boolean getStatusCotisation() throws SQLException {
+		return DaoFactory.getSessionDao().getNotCotisation(id)==0;
 	}
 	
-	public boolean getStatusLoan() {
-		return true;
+	public boolean getStatusLoan() throws SQLException {
+		return DaoFactory.getSessionDao().getNotLoan(id)==0;
 	}
 	
 	public static Session getActiveSession() throws SQLException {
@@ -76,6 +78,17 @@ public class Session extends AbstractEntity{
 		return DaoFactory.getContributionDao().findBySession(id);
 	}
 
+	public Text getStatusColorContribute() throws SQLException {
+		Text t = new Text(getStatusCotisation()?"Valide":"Invalide");
+			t.getStyleClass().add(getStatusCotisation()?"status-good":"status-not-good");
+		return t;
+	}
+
+	public Text getStatusColorLoan() throws SQLException {
+		Text t = new Text(getStatusLoan()?"Valide":"Invalide");
+			t.getStyleClass().add(getStatusLoan()?"status-good":"status-not-good");
+		return t;
+	}
 	@Override
 	public void setEntity(AbstractEntity t) {
 		

@@ -3,8 +3,11 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import exception.EntityNotFoundException;
+import model.AbstractEntity;
 import model.Loan;
 
 public class LoanDao extends Dao<Loan>{
@@ -56,5 +59,18 @@ public class LoanDao extends Dao<Loan>{
 		ps.setString(1, id);
 		ps.executeUpdate();
 		return find(id);
+	}
+
+	public List<Loan> findByUser(String id) throws SQLException, EntityNotFoundException {
+		List<Loan> array = new ArrayList<Loan>();
+		String sql = "SELECT `id` FROM `loan` WHERE `user` = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setString(1, id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+				array.add(find(rs.getString("id")));
+				((AbstractEntity) array.get(array.size()-1)).setRow(array.size());
+		}
+		return (ArrayList<Loan>) array;
 	}
 }

@@ -119,19 +119,37 @@ public class UserDao extends Dao<User> {
 	}
 	
 	public boolean userIsValidContribution(String id) throws SQLException {
-		String sql = "SELECT * FROM  `session` "
-				+ "WHERE `id` NOT IN "
-				+ "	(SELECT `session_contributed` FROM `contribution` c  "
-				+ "     WHERE `user` = ?) "
-				+ "ORDER BY date_session ASC "
-				+ "LIMIT 1;";
+		String sql = "SELECT count(*) FROM `sanction` WHERE `status` = 1 and `user` = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
-//			return ;
+			return rs.getInt(1)==0;
 		}
 		return false;
+	}
+
+	public boolean userIsValidLoan(String id) throws SQLException {
+		String sql = "SELECT count(*) FROM `loan` WHERE `status` = 2 and `user` = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			return rs.getInt(1)==0;
+		}
+		return false;
+	}
+
+	public User findLogin(String id) throws SQLException, EntityNotFoundException {
+		String sql = "SELECT `id` FROM `user` WHERE `login` = ? OR `mail` = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.setString(2, id);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			return find(rs.getString(1));
+		}
+		return null;
 	}
 
 }

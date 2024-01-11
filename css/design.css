@@ -1,0 +1,42 @@
+/*
+ * Material Filled
+ */
+ *{
+ 	-fx-font-size: 15;
+ }
+.backgroundWallpaper{
+ 	-fx-background-image: url("../img/643482.jpg");
+ 	-fx-background-size: cover;
+ 	-fx-background-color: white;
+}
+.textWelcome{
+	-fx-font-size: 25;
+	-fx-font-weigth: bold;
+}
+.hBoxConnexion{
+ 	-fx-background-color: #383838;
+}
+.textFieldConnexion{
+	-fx-background-color: white;
+	
+	-fx-border-color: grey;
+}
+.buttonConnexion{
+ 	-fx-background-color: blue;
+ 	-fx-text-fill: white;
+ 	
+ }
+ .buttonConnexion:hover{
+ 	-fx-background-color: #848484;
+ }
+ .vBoxSideBar{
+ 	-fx-background-color: blue;
+ }
+ .btnSideBar{
+ 	-fx-background-color: blue;
+ 	-fx-text-fill: white;
+ }
+  .btnSideBar:hover{
+ 	-fx-background-color: grey;
+ 	
+ }

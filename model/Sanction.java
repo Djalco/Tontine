@@ -6,8 +6,10 @@ import java.util.List;
 
 import dao.DaoFactory;
 import exception.EntityNotFoundException;
+import javafx.scene.text.Text;
 import model.enumration.InfractionPayment;
 import model.enumration.PaymentType;
+import model.enumration.Status;
 
 public class Sanction extends AbstractEntity{
 	private static List<Sanction> sanctions = new ArrayList<Sanction>();
@@ -66,6 +68,19 @@ public class Sanction extends AbstractEntity{
 	@Override
 	public void setEntity(AbstractEntity t) {
 		
+	}
+	
+
+
+	public Text getStatusColor() throws SQLException, EntityNotFoundException {
+		Text t = new Text("Valide");
+//		if(status == Status.PENDING)
+//			t.getStyleClass().add("status-pending");
+//		else if (status == Status.VALID)
+			t.getStyleClass().add("status-good");
+//		else
+//			t.getStyleClass().add("status-not-good");
+		return t;
 	}
 	
 	public static void intiSanctions() throws SQLException, EntityNotFoundException {

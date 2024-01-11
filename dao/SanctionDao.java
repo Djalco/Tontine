@@ -4,9 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import exception.EntityNotFoundException;
 import model.AbstractEntity;
+import model.Contribution;
+import model.Loan;
 import model.Sanction;
 import model.Session;
 import model.enumration.InfractionPayment;
@@ -41,14 +44,23 @@ public class SanctionDao extends Dao<Sanction>{
 
 	@Override
 	public Sanction find(String id) throws SQLException, EntityNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM `"+table+"` WHERE id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			return new Sanction(rs.getString("id"),rs.getInt("infraction_payment"), 
+					rs.getString("user"),rs.getString("session_start"),
+					rs.getString("session_sold"));
+
+
+		} throw new EntityNotFoundException("aucun resultat"); 
 	}
-	
+
 	public void initSanction() throws SQLException, EntityNotFoundException {
 		initSanctionContribution();
 	}
-	
+
 	public void initSanctionContribution() throws SQLException, EntityNotFoundException {
 		String sql = "SELECT u.`id` AS `user_id`, s.`id` AS `session_id` FROM `user` u "
 				+ "JOIN `session` s "
@@ -69,6 +81,19 @@ public class SanctionDao extends Dao<Sanction>{
 			create(new Sanction("",InfractionPayment.LATE_PAYMENT.getId(),
 					rs.getString("user_id"),rs.getString("session_id"),Session.getActiveSession().getId()));
 		}
+	}
+
+	public List<Sanction> findByUser(String id) throws SQLException, EntityNotFoundException {
+		List<Sanction> array = new ArrayList<Sanction>();
+		String sql = "SELECT `id` FROM " + table + " WHERE `user` = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setString(1, id);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			array.add(find(rs.getString("id")));
+			//				 array.get(array.size()-1).setRow(array.size());
+		}
+		return (ArrayList<Sanction>) array;
 	}
 
 }

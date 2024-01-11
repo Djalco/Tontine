@@ -1,0 +1,131 @@
+*{
+	-fx-font-size: 12;
+	
+}
+.textColor{
+	-fx-fill: #012970;
+}
+.background{
+	-fx-background-color: white;
+	-fx-background-radius: 0;
+}
+.tab{
+	-fx-background-color:white;
+}
+Button{
+	-fx-background-color: none;
+	-fx-alignment: bottom-left;
+	-fx-cursor:HAND;
+}
+Button:hover{
+	-fx-background-color: blue;
+	-fx-text-fill: white;
+}
+DatePicker,ComboBox,TextField,TextArea,PasswordField{
+	-fx-background-color: white;
+	-fx-border-color: grey;
+	-fx-background-radius: 5;
+	-fx-border-radius: 5;
+	-fx-padding: 5;
+}
+DatePicker:focused,ComboBox:focused,TextField:focused,TextArea:focused,PasswordField:focused{
+	-fx-border-color: blue;
+}
+
+.sideBar{
+	-fx-background-color: #222d32;
+}
+.buttonSideBar{
+	-fx-text-fill: white;
+	-fx-padding: 10 50 10 10;
+	-fx-border-color: black;
+	-fx-border-width: 0 0 0 10;
+}
+.buttonSideBar:hover{
+	-fx-background-color: blue;
+}
+.containerSearch{
+	-fx-background-color: #f6f9ff;
+	-fx-border-color: #d2d2d2;
+	-fx-background-radius: 8;
+	-fx-border-radius: 8;
+	-fx-font-weight: bold;
+}
+.textHome{
+	-fx-font-size: 25;
+	-fx-font-weight: bold;
+	-fx-fill: #012970;
+}
+.textHomeSub{
+	-fx-font-size: 15;
+	-fx-font-weight: bold;
+	-fx-fill: #989bbd;	
+}
+.textTitleSearch{
+	-fx-font-size: 15;
+	-fx-font-weight: bold;
+	-fx-fill: #012970;
+}
+.textTable{
+	-fx-font-size: 18;
+	-fx-font-weight: bold;
+	-fx-fill: #012970;
+}
+.btnAdd{
+	-fx-background-color: #417dff;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+	-fx-background-radius: 5;
+}
+TableView{
+	-fx-background-color: white;
+	-fx-font-size: 12;
+}
+TableView .column-header{
+	-fx-background-color: white;
+	-fx-alignment: left;
+}
+.table-row-cell{
+	-fx-background-color: #ececec;
+	-fx-cell-size: 40;
+}
+.table-row-cell:odd{
+	-fx-background-color: white;
+}
+.table-row-cell:focused{
+	-fx-background-color: #bfbfbf;
+	-fx-text-fill: black;
+}
+.tableColumnm{
+	-fx-alignment: center-left;
+}
+.btnTable{
+	-fx-text-fill: #caced9;
+	-fx-font-size: 25;
+}
+.btnTable:hover{
+	-fx-background-color: none;
+}
+.labelTable{
+	-fx-background-color:#417dff;
+	-fx-fill: white;
+	-fx-font-size: 15;
+}
+.powerText{
+	-fx-font-size: 15;
+}
+.careText{
+	-fx-font-weight: bold;
+	-fx-font-size: 15;
+}
+.btnCancel{
+	-fx-background-color: #5c636a;
+	-fx-background-radius: 5;
+	-fx-text-fill: white;
+}
+.btnSave{
+	-fx-background-color: #417dff;
+	-fx-background-radius: 5;
+	-fx-text-fill: white;
+}

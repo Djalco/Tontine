@@ -55,6 +55,7 @@ CREATE TABLE `sanction`(
 	`user` VARCHAR(20) NOT NULL,
 	`session_start` VARCHAR(20) NOT NULL,
 	`session_sold` VARCHAR(20) DEFAULT NULL,
+	`status` INT DELAULT 0 NOT NULL,
 	FOREIGN KEY (`user`) REFERENCES `user`(`id`),
 	FOREIGN KEY (`session_start`) REFERENCES `session`(`id`),
 	FOREIGN KEY (`session_sold`) REFERENCES `session`(`id`)

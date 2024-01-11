@@ -2,11 +2,13 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import controller.enumeration.State;
 import controller.generic.*;
 import dao.SettingDao;
+import exception.EntityNotFoundException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -26,6 +28,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Loan;
+import model.Sanction;
 import model.Session;
 import model.User;
 
@@ -67,6 +70,11 @@ public class PrincipalController implements Initializable{
 
 	/*All pane for manage sanction*/
 	private VBox sanctionManage;
+	private VBox sanction;
+	
+	
+	private ManageControllerAbstract<Sanction> sanctionManageControl;
+	private EntityControllerAbstract<Sanction> sanctionControl;
 
 
 	/*All pane for manage session*/
@@ -77,12 +85,9 @@ public class PrincipalController implements Initializable{
 	private MoreControllerAbstract<Session> sessionMoreControl;
 
 	/*All pane for manage log*/
-	private VBox log;
 
 
 	/*All pane for manage setting*/
-	private VBox settingManage;
-	private VBox account;
 	private Parent appSetting;
 
 	@FXML
@@ -107,6 +112,7 @@ public class PrincipalController implements Initializable{
 		navigationControl.setManageType(state.getName());
 		//		manageController
 		main.getChildren().addAll(navigation,child);
+		manageController.refresh();
 		VBox.setVgrow(child, Priority.ALWAYS);
 		createAndShowPopUp(message);
 	}
@@ -136,9 +142,11 @@ public class PrincipalController implements Initializable{
 			setMember();
 			setSession();
 			setLoan();
+			setSanction();
+			setSetting();
 
 
-			switchPane(memberManage, "Membre",State.GESTION);
+			sidebarControl.account().fire();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -162,13 +170,67 @@ public class PrincipalController implements Initializable{
 			e.printStackTrace();
 		}
 	}
+	
+	private void setSetting() {
+		sidebarControl.account().setOnAction(e->{
+			memberControl.setEntity(User.getUserConnected());
+			try {
+				memberControl.setState(State.DETAIL);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			switchPane(member, "Compte", State.GESTION);
+		});
+	}
+
+
+	private void setSanction() throws IOException {
+		FXMLLoader load1 = new FXMLLoader();
+		load1.setLocation(getClass().getResource("/view/sanction_manage.fxml"));
+		sanctionManage = load1.load();
+		sanctionManageControl = load1.getController();
+		sidebarControl.sanctionManage().setOnAction(e->{
+			switchPane(sanctionManage, "Sanction", State.OVERVIEW);
+		});
+		
+		FXMLLoader load2 = new FXMLLoader();
+		load2.setLocation(getClass().getResource("/view/sanction.fxml"));
+		sanction = load2.load();
+
+		sanctionControl = load2.getController();
+		sanctionControl.setController(this,sanctionManageControl);
+		sanctionControl.setPage(sanctionManage);
+		sanctionManageControl.setPage(sanction);
+		sanctionManageControl.setController(this, sanctionControl);
+
+		sidebarControl.memberAdd().setOnAction(e->{
+			try {
+				memberControl.setState(State.ADD);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			navigationControl.setEntity("Sanction");
+			navigationControl.setManageType(State.ADD.getName());
+			switchPane(sanction, "Sanction", State.ADD);
+		});
+
+		sanctionControl.getBackBtn().setOnAction(e->{
+			switchPane(sanctionManage, "Sanction", State.GESTION);
+		});
+
+		sanctionControl.getCancelBtn().setOnAction(e->{
+			switchPane(sanctionManage, "Sanction", State.GESTION);
+		});		
+	}
+
+
 	private void setLoan() throws IOException {
 		FXMLLoader load1 = new FXMLLoader();
 		load1.setLocation(getClass().getResource("/view/loan_manage.fxml"));
 		loanManage = load1.load();
 		loanManageControl = load1.getController();
 		sidebarControl.loanManage().setOnAction(e->{
-			switchPane(loanManage, "Loan", State.GESTION);
+			switchPane(loanManage, "Prêt", State.GESTION);
 		});
 		
 		FXMLLoader load2 = new FXMLLoader();
@@ -313,16 +375,24 @@ public class PrincipalController implements Initializable{
 			switchPane(memberManage, "Utilisateur", State.GESTION);
 		});
 
-		memberControl.getMoreBtn().setOnAction(e->{
-			switchPane(memberMore, "Utilisateur", State.GESTION);
-		});
-
 
 		FXMLLoader load3 = new FXMLLoader();
 		load3.setLocation(getClass().getResource("/view/user_more.fxml"));
 		memberMore = load3.load();
 		memberMoreControl = load3.getController();
 
+
+
+		memberControl.getMoreBtn().setOnAction(e->{
+			try {
+				memberMoreControl.setEntity(memberControl.getEntity());
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} catch (EntityNotFoundException e1) {
+				e1.printStackTrace();
+			}
+			switchPane(memberMore, "Utilisateur", State.GESTION);
+		});
 //		memberMoreControl.getBackBtn().setOnAction(e->{
 //			switchPane(memberManage, "Utilisateur", State.GESTION);
 //		});

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane stylesheets="@../css/design.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConnexionController">
+   <children>
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" fillHeight="false" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="backgroundWallpaper">
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" opacity="0.5" style="-fx-background-color: grey;">
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </HBox>
+            <HBox alignment="BOTTOM_RIGHT" fillHeight="false" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Version 1.1.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER" focusTraversable="true" spacing="50.0">
+                                 <children>
+                                    <HBox alignment="TOP_CENTER" focusTraversable="true">
+                                       <children>
+                                          <ImageView fitHeight="50.0" fitWidth="50.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/logo.png" />
+                                             </image>
+                                          </ImageView>
+                                          <VBox>
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NEBS">
+                                                   <font>
+                                                      <Font name="System Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Text>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tontine">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <VBox spacing="20.0">
+                                       <children>
+                                          <HBox alignment="CENTER" styleClass="hBoxConnexion">
+                                             <children>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../img/name.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <TextField fx:id="textFieldIdentifiant" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="identifiant" styleClass="textFieldConnexion" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" styleClass="hBoxConnexion">
+                                             <children>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../img/password.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <StackPane HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <PasswordField fx:id="passwordFieldPassword" onKeyReleased="#passLaunch" prefHeight="30.0" promptText="Mot de passe" styleClass="textFieldConnexion" />
+                                                      <TextField fx:id="textFielPassword" focusTraversable="false" onKeyReleased="#textLaunch" prefHeight="30.0" prefWidth="300.0" promptText="Mot de passe" styleClass="textFieldConnexion" visible="false" />
+                                                   </children>
+                                                </StackPane>
+                                                <HBox>
+                                                   <children>
+                                                      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#change" prefWidth="35.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" styleClass="buttonConnexion">
+                                                         <graphic>
+                                                            <ImageView fx:id="imgButton" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../img/show.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <Button mnemonicParsing="false" onAction="#connexion" prefWidth="200.0" styleClass="buttonConnexion" text="Connexion &gt;" />
+                                    <VBox VBox.vgrow="ALWAYS" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+            </HBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

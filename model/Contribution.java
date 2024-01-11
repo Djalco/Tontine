@@ -14,6 +14,7 @@ import model.enumration.ManagePaymentType;
 
 public class Contribution extends ManagePayment{
 
+	private static int amount;
 	private String sessionContributed;
 	
 	public Contribution(String id, String user) throws SQLException, EntityNotFoundException {
@@ -42,9 +43,16 @@ public class Contribution extends ManagePayment{
 		
 	}
 
+	public static void setSetting(int amount) {
+		Contribution.amount = amount;
+	}
 	public void setSessionContributed(String sessionContributed) {
 		this.sessionContributed = sessionContributed;
 	}   
+	
+	public static int getAmount() {
+		return amount;
+	}
 	
 	
 	

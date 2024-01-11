@@ -60,4 +60,14 @@ public class SettingDao {
 			return rs.getInt(1);
 		return -1;
 	}
+
+	public static int getAmountContribute() throws SQLException {
+		Connection con = BdConnexion.getInstance();
+		String sql = "SELECT `amount_cotisation` FROM `setting`";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next())
+			return rs.getInt(1);
+		return -1;
+	}
 }

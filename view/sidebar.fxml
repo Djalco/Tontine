@@ -17,7 +17,7 @@
 
 <ScrollPane fitToHeight="true" stylesheets="@../css/light.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SidebarController">
    <content>
-      <VBox spacing="5.0" styleClass="sidebar">
+      <VBox fx:id="container" spacing="5.0" styleClass="sidebar">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>

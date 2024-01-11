@@ -23,35 +23,35 @@ import model.enumration.Role;
 public class UserManageController extends ManageControllerAbstract<User>{
 
 
-    @FXML
-    private TextField searchFirstName;
+	@FXML
+	private TextField searchFirstName;
 
-    @FXML
-    private TextField searchLastName;
+	@FXML
+	private TextField searchLastName;
 
-    @FXML
-    private TextField searchPhone;
+	@FXML
+	private TextField searchPhone;
 
-    @FXML
-    private ComboBox<?> searchRole;
+	@FXML
+	private ComboBox<?> searchRole;
 
-    @FXML
-    private TableColumn<User, String> columnContribute;
+	@FXML
+	private TableColumn<User, Text> columnContribute;
 
-    @FXML
-    private TableColumn<User, String> columnFirstName;
+	@FXML
+	private TableColumn<User, String> columnFirstName;
 
-    @FXML
-    private TableColumn<User, String> columnLastName;
+	@FXML
+	private TableColumn<User, String> columnLastName;
 
-    @FXML
-    private TableColumn<User, String> columnLoan;
+	@FXML
+	private TableColumn<User, Text> columnLoan;
 
-    @FXML
-    private TableColumn<User, String> columnPhone;
+	@FXML
+	private TableColumn<User, String> columnPhone;
 
-    @FXML
-    private TableColumn<User, Role> columnRole;
+	@FXML
+	private TableColumn<User, Role> columnRole;
 
 
 	@Override
@@ -70,9 +70,9 @@ public class UserManageController extends ManageControllerAbstract<User>{
 		columnLastName.setCellValueFactory(new PropertyValueFactory<User, String>("lastname"));
 		columnPhone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
 		columnRole.setCellValueFactory(new PropertyValueFactory<User, Role>("role"));
-
+		columnContribute.setCellValueFactory(new PropertyValueFactory<User, Text>("statusContributiontion"));
+		columnLoan.setCellValueFactory(new PropertyValueFactory<User, Text>("statusLoan"));
 	}
 
 
 }
-	
